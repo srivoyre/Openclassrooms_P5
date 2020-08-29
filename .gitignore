@@ -3,3 +3,7 @@
 
 # Dependencies
 vendor/
+
+# Config
+config/prod.php
+config/dev.php
