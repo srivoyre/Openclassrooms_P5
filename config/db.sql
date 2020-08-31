@@ -1,12 +1,8 @@
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
 --
 -- Base de données : `p5`
 --
 DROP DATABASE IF EXISTS `p5`;
-CREATE DATABASE `blog` CHARACTER SET utf8;
+CREATE DATABASE `p5` CHARACTER SET utf8;
 
 USE `p5`;
 
@@ -43,9 +39,4 @@ INSERT INTO `role` (`id`, `name`) VALUES
 -- Déchargement des données de la table `user`
 --
 INSERT INTO `user` (`id`, `pseudo`, `password`, `createdAt`, `role_id`, `email`) VALUES
-(1, 'admin', '$2y$10$spsXmA73UvHzNzAJN6qVke9nppqH39ZkRZLOf4/QY7AhsxynZIq0K', '2020-06-05 15:00:17', 1, 'admin@admin.com'),
-(16, 'Jean Forteroche', '$2y$10$tPu8hJik/.Q1vWpaevwDHeA5swX9pFCe2VMJcMAdqAZ2HvDgNnHGa', '2020-06-15 08:22:30', 1, 'jeanforteroche@email.com'),
-(17, 'Lucille Marillion', '$2y$10$cxcgnAwFeRtY8FXm2kcdgekV5sLR83klAKsvY60VxwV.U9KmkjLfG', '2020-07-05 08:24:04', 2, 'lucillemarillion@email.com'),
-(18, '@n0nym0u5', '$2y$10$1MS8xi3Rb66pMppJmMgrwOsUyoxNlvJYqyHmCBxkgDcSK/2SB80g2', '2020-07-08 08:24:33', 2, 'gae50@vmani.com'),
-(19, 'nicolas-lepetit', '$2y$10$FOlUypI3dI.v44ccLlF70uz5pV9oiQQpoVHYzLYrcnc5kmdN3mMHW', '2020-08-01 08:27:13', 2, 'lepetitnicolas@email.com'),
-(20, 'jeangiono', '$2y$10$fHPYzsPA8xt61D/WEOSiHORTOKpx/qNjMGewPtwSF7YS/5fsWoDGu', '2020-07-27 08:27:41', 2, 'jeangiono@email.com');
+(1, 'admin', '$2y$10$spsXmA73UvHzNzAJN6qVke9nppqH39ZkRZLOf4/QY7AhsxynZIq0K', '2020-06-05 15:00:17', 1, 'admin@admin.com');
