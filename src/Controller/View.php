@@ -6,7 +6,7 @@ use App\src\Request;
 
 /**
  * Class View
- * @package App\src\controller
+ * @package App\src\Controller
  */
 class View
 {
@@ -31,9 +31,9 @@ class View
      */
     public function render(string $template, $data = [])
     {
-        $this->file = '../src/view/'.$template.'.php';
+        $this->file = '../src/View/'.$template.'.php';
         $content = $this->renderFile($this->file, $data);
-        $view = $this->renderFile('../src/view/base.php', [
+        $view = $this->renderFile('../src/View/base.php', [
             'title' => $this->title,
             'script' => $this->script,
             'content' => $content,

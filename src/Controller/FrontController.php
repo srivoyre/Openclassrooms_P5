@@ -15,6 +15,7 @@ class FrontController extends Controller
      */
     public function home()
     {
+        return $this->view->render('home');
     }
 
     /**
