@@ -61,7 +61,7 @@ class FlaggedJoke
     {
         $this->flagCount = $flagCount;
     }
-    
+
     /**
      * @return mixed
      */

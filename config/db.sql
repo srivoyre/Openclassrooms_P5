@@ -46,7 +46,7 @@ CREATE TABLE `flagged-joke` (
                         `id` smallint(11) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                         `joke_api_id` smallint(11) NOT NULL,
                         `flag_count` smallint(11) NOT NULL,
-                        `filtered` tinyint(1) NOT NULL,
+                        `filtered` tinyint(1) NOT NULL DEFAULT '0',
                         `createdAt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------

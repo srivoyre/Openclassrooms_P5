@@ -28,9 +28,12 @@ class SavedJokeDAO extends DAO
 
     public function getSavedJokes(int $userId)
     {
-        $sql = 'SELECT id, user_id, joke_api_id,createdAt 
+        // We do not filter jokes saved by user. If the joke has been reported by another user,
+        // those who saved it can still see it appear in their profiles.
+
+        $sql = 'SELECT id, user_id, joke_api_id, createdAt 
                 FROM saved-joke 
-                WHERE user_id = ? 
+                WHERE user_id = ?
                 ORDER BY createdAt DESC';
         $result = $this->createQuery($sql,[$userId]);
         $savedJokes = [];
