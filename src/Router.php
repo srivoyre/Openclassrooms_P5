@@ -40,7 +40,8 @@ class Router
                 $this->frontController->home();
             }
         } catch (Exception $ex) {
-            $this->errorController->errorServer();
+            //$this->errorController->errorServer();
+            echo $ex->getMessage();
         }
     }
 
@@ -50,6 +51,9 @@ class Router
     public function route($route)
     {
         switch ($route) {
+            case 'saveJoke' :
+                $this->backController->saveJoke($this->request->getGet());
+                break;
             case 'register':
                 $this->frontController->register($this->request->getPost());
                 break;
