@@ -10,7 +10,7 @@
         <div class="row mb-5">
             <div class="col-1"></div>
             <div id="joke-container" class="col-10 text-center py-5">
-                <a type="button" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=2">
+                <a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=">
                     <i class="far fa-star"></i>
                 </a>
                 <!--<i class="fas fa-star"></i>-->
