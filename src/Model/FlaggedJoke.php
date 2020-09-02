@@ -11,6 +11,7 @@ class FlaggedJoke
     private $id;
     private $jokeApiId;
     private $flagCount;
+    private $filtered;
     private $createdAt;
 
     /**
@@ -59,6 +60,22 @@ class FlaggedJoke
     public function setFlagCount($flagCount)
     {
         $this->flagCount = $flagCount;
+    }
+    
+    /**
+     * @return mixed
+     */
+    public function getFiltered()
+    {
+        return $this->filtered;
+    }
+
+    /**
+     * @param mixed $filtered
+     */
+    public function setFiltered($filtered)
+    {
+        $this->filtered = $filtered;
     }
 
     /**
