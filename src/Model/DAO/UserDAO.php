@@ -7,7 +7,7 @@ use App\src\Model\User;
 
 /**
  * Class UserDAO
- * @package App\src\model\DAO
+ * @package App\src\Model\DAO
  */
 class UserDAO extends DAO
 {
