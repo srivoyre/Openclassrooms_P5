@@ -52,8 +52,7 @@ class Router
     {
         switch ($route) {
             case 'saveJoke' :
-                $this->backController->saveJoke($this->request->getGet()->get('jokeApiId'));
-                var_dump($this->request->getGet()->get('jokeApiId'));
+                $this->backController->saveJoke($this->request->getGet());
                 break;
             case 'register':
                 $this->frontController->register($this->request->getPost());
