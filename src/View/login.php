@@ -21,7 +21,7 @@
                         <br />
                         <input class="form-control" type="password" id="password" name="password" required aria-required="true">
                     </div>
-                    <input class="btn btn-primary"  type="submit" value="Connexion" id="submit" name="submit">
+                    <input class="btn btn-primary" type="submit" value="Connexion" id="submit" name="submit">
                 </form>
                 <div class="row mt-5">
                     <div class="col-6 text-center">
