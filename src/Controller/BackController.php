@@ -43,6 +43,18 @@ class BackController extends Controller
         }
     }
 
+    public function saveJoke(int $jokeApiId)
+    {
+        if ($this->checkLoggedIn()) {
+            $this->savedJokeDAO->addSavedJoke($jokeApiId, $this->session->get('user')->getId());
+            $this->session->set(
+                'success_message',
+                'This joke has been saved! You can find it in your profile page.'
+            );
+            return $this->view->render('home');
+        }
+    }
+
     /**
      * @return View
      */
