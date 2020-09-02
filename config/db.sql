@@ -29,6 +29,27 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- --------------------------------------------------------
 --
+-- Structure de la table `saved-joke`
+--
+CREATE TABLE `saved-joke` (
+                        `id` smallint(11) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                        `joke_api_id` smallint(11) NOT NULL,
+                        `user_id` smallint(11) UNSIGNED NOT NULL,
+                        `createdAt` datetime NOT NULL,
+                        CONSTRAINT      `saved-joke_fk_user_id`  FOREIGN KEY (`user_id`)    REFERENCES  `user`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- --------------------------------------------------------
+--
+-- Structure de la table `flagged-joke`
+--
+CREATE TABLE `flagged-joke` (
+                        `id` smallint(11) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+                        `joke_id` smallint(11) NOT NULL,
+                        `flag_count` smallint(11) NOT NULL,
+                        `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- --------------------------------------------------------
+--
 -- Déchargement des données de la table `role`
 --
 INSERT INTO `role` (`id`, `name`) VALUES
