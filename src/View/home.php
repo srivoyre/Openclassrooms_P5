@@ -14,7 +14,7 @@
                     <i class="far fa-star"></i>
                 </a>
                 <!--<i class="fas fa-star"></i>-->
-                <a type="button" class="btn btn-outline-danger" href="index.php?route=flagJoke&jokeApiId=">
+                <a type="button" id="flagJokeBtn" class="btn btn-outline-danger" href="index.php?route=flagJoke&jokeApiId=">
                     <i class="far fa-flag"></i>
                 </a>
                 <!--<i class="fas fa-flag"></i>-->

@@ -24,7 +24,7 @@ class FrontController extends Controller
         if($this->flaggedJokeDAO->isFlaggedJoke($jokeApiId)) {
             $this->flaggedJokeDAO->flagExistingJoke($jokeApiId);
         } else {
-            $this->flaggedJokeDAO->addFlaggedJoke($jokeApiId, (int)$this->session->get('user')->getId());
+            $this->flaggedJokeDAO->addFlaggedJoke($jokeApiId);
         }
         $this->session->set(
             'success_message',

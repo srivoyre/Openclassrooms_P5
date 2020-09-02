@@ -42,7 +42,7 @@ CREATE TABLE `savedJoke` (
 --
 -- Structure de la table `flagged-joke`
 --
-CREATE TABLE `flagged-joke` (
+CREATE TABLE `flaggedJoke` (
                         `id` smallint(11) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
                         `joke_api_id` smallint(11) NOT NULL,
                         `flag_count` smallint(11) NOT NULL,
