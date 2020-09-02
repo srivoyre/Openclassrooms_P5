@@ -1,0 +1,9 @@
+#joke-container {
+  border: 2px double gray;
+  min-height: 200px;
+  display: table;
+}
+#joke {
+  display: table-cell;
+  font-size: larger;
+}

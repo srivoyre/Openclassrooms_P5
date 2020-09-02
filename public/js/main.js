@@ -24,7 +24,7 @@ function test() {
                     //console.log(randomJoke.joke);
                 } else {
                     // If type == "single", the joke only has the "joke" property
-                    document.getElementById('joke').innerHTML = [randomJoke.setup, '<br/>' + randomJoke.delivery];
+                    document.getElementById('joke').innerHTML = randomJoke.setup + '<br /> <br />' + randomJoke.delivery;
                 }
             } else if (xhr.readyState == 4) {
                 console.log("Error while requesting joke.\n\nStatus code: " + xhr.status + "\nServer response: " + xhr.responseText);

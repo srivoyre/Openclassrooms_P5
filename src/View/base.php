@@ -131,7 +131,7 @@
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
         </div>
 
-        <div id="content" class="row mt-4">
+        <div id="content" class="row">
             <div class="col-12">
                 <?= filter_var($content) ?>
             </div>
