@@ -14,6 +14,24 @@ document.addEventListener('DOMContentLoaded',(event) =>{
         console.log(jokeN.innerHTML);
     }
 })
+function changeURLParam(elementId, jokeId) {
+    var jokeUrl = new URL(document.getElementById(elementId).getAttribute('href'), 'http://localhost:8080/projects/OC_P5/public/');
+    console.log(jokeUrl);
+    var search_params = jokeUrl.searchParams;
+    console.log(search_params);
+
+    search_params.set('jokeApiId', jokeId);
+
+    jokeUrl.search = search_params.toString();
+
+    var new_url = jokeUrl.toString();
+
+    document.getElementById(elementId).setAttribute('href', new_url);
+    //document.getElementById('flagJokeBtn').setAttribute('href', new_url);
+
+// output : http://demourl.com/path?id=100&topic=main
+    console.log(new_url);
+}
 function joke(idRange = 1-100) {
 
     let newJoke = document.getElementById('newJoke');
@@ -27,27 +45,14 @@ function joke(idRange = 1-100) {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", baseURL + "/joke/" + categories.join(",") + "?" + params.join("&"));
 
-    //xhr.open("GET", baseURL + "/joke/" + categories.join(",") + "?" + params.join("&"));
     newJoke.addEventListener('click', () => {
         showHiddenElement(document.getElementById('joke-container'));
             if (xhr.readyState == 4 && xhr.status < 300) // readyState 4 means request has finished + we only want to parse the joke if the request was successful (status code lower than 300)
             {
                 var randomJoke = JSON.parse(xhr.responseText);
-                var saveJokeUrl = new URL(document.getElementById('saveJokeBtn').getAttribute('href'), 'http://localhost:8080/projects/OC_P5/public/');
-                console.log(saveJokeUrl);
-                var search_params = saveJokeUrl.searchParams;
-                console.log(search_params);
 
-                search_params.set('jokeApiId', randomJoke.id);
-
-                saveJokeUrl.search = search_params.toString();
-
-                var new_url = saveJokeUrl.toString();
-
-                document.getElementById('saveJokeBtn').setAttribute('href', new_url)
-
-// output : http://demourl.com/path?id=100&topic=main
-                console.log(new_url);
+                changeURLParam('saveJokeBtn', randomJoke.id);
+                changeURLParam('flagJokeBtn', randomJoke.id);
 
                 if (randomJoke.type == "single") {
                     // If type == "single", the joke only has the "joke" property

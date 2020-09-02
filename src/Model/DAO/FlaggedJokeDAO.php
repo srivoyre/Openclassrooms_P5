@@ -30,7 +30,7 @@ class FlaggedJokeDAO extends DAO
     public function getFlaggedJokes($filtered = false)
     {
         $sql = 'SELECT id, joke_api_id, flag_count, createdAt 
-                FROM flagged-joke 
+                FROM flaggedJoke 
                 WHERE filtered = ?
                 ORDER BY flag_count DESC, createdAt DESC';
         $result = $this->createQuery($sql,[$filtered]);
@@ -46,32 +46,32 @@ class FlaggedJokeDAO extends DAO
         return $flaggedJokes;
     }
 
-    public function isFlaggedJoke(int $jokeId)
+    public function isFlaggedJoke(int $jokeApiId)
     {
         $sql = 'SELECT id, joke_api_id, flag_count, filtered, createdAt
-                FROM flagged-joke 
+                FROM flaggedJoke 
                 WHERE joke_api_id = ?';
-        $result = $this->createQuery($sql, [$jokeId]);
+        $result = $this->createQuery($sql, [$jokeApiId]);
         $flaggedJoke = $result->fetch();
         $result->closeCursor();
 
-        return $this->buildObject($flaggedJoke);
+        return $flaggedJoke;
     }
     
     public function addFlaggedJoke(int $jokeApiId)
     {
-        $sql = 'INSERT INTO flagged-joke (joke_api_id, flaged_count, filtered, createdAt) 
+        $sql = 'INSERT INTO flaggedJoke (joke_api_id, flag_count, filtered, createdAt) 
                 VALUES(?,?,?,NOW())';
         $this->createQuery($sql, [
             $jokeApiId,
             0,
-            0
+            1
         ]);
     }
 
     public function flagExistingJoke(int $jokeApiId)
     {
-        $sql = 'UPDATE flagged-joke 
+        $sql = 'UPDATE flaggedJoke 
                 SET flag_count = flag_count + 1 
                 WHERE joke_api_id = :jokeApiId';
         $this->createQuery($sql, [
@@ -82,7 +82,7 @@ class FlaggedJokeDAO extends DAO
     public function deleteFlaggedJoke(int $flaggedJokeId)
     {
         $sql = 'DELETE 
-                FROM flagged-joke 
+                FROM flaggedJoke 
                 WHERE id = ?';
         $this->createQuery($sql, [$flaggedJokeId]);
     }

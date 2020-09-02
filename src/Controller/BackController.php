@@ -43,7 +43,7 @@ class BackController extends Controller
         }
     }
 
-    public function saveJoke($get)
+    public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
             $this->savedJokeDAO->addSavedJoke($get->get('jokeApiId'), $this->session->get('user')->getId());
