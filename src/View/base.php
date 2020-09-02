@@ -56,7 +56,7 @@
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link text-white" href="index.php">Tous les chapitres</a>
+                        <a class="nav-link text-white" href="index.php">Accueil</a>
                         <?php
                         if($this->session->get('loggedIn'))
                         {
@@ -131,7 +131,7 @@
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
         </div>
 
-        <div id="content" class="row mt-4">
+        <div id="content" class="row">
             <div class="col-12">
                 <?= filter_var($content) ?>
             </div>

@@ -4,7 +4,7 @@ namespace App\src\Controller;
 
 /**
  * Class ErrorController
- * @package App\src\controller
+ * @package App\src\Controller
  */
 class ErrorController extends Controller
 {
