@@ -18,6 +18,21 @@ class FrontController extends Controller
         return $this->view->render('home');
     }
 
+    public function flagJoke(Parameter $get)
+    {
+        $jokeApiId = (int)$get->get('jokeApiId');
+        if($this->flaggedJokeDAO->isFlaggedJoke($jokeApiId)) {
+            $this->flaggedJokeDAO->flagExistingJoke($jokeApiId);
+        } else {
+            $this->flaggedJokeDAO->addFlaggedJoke($jokeApiId, (int)$this->session->get('user')->getId());
+        }
+        $this->session->set(
+            'success_message',
+            'This joke has been reported!'
+        );
+        header('Location: index.php');
+    }
+
     /**
      * @param Parameter $post
      * @return View

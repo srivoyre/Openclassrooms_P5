@@ -46,12 +46,12 @@ class FlaggedJokeDAO extends DAO
         return $flaggedJokes;
     }
 
-    public function isFlaggedJoke(int $jokeId)
+    public function isFlaggedJoke(int $jokeApiId)
     {
         $sql = 'SELECT id, joke_api_id, flag_count, filtered, createdAt
                 FROM flagged-joke 
                 WHERE joke_api_id = ?';
-        $result = $this->createQuery($sql, [$jokeId]);
+        $result = $this->createQuery($sql, [$jokeApiId]);
         $flaggedJoke = $result->fetch();
         $result->closeCursor();
 
