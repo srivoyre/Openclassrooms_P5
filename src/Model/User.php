@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\model;
+namespace App\src\Model;
 
 /**
  * Class User
- * @package App\src\model
+ * @package App\src\Model
  */
 class User
 {

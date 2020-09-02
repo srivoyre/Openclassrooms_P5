@@ -7,7 +7,7 @@ use App\src\Model\User;
 
 /**
  * Class UserDAO
- * @package App\src\model\DAO
+ * @package App\src\Model\DAO
  */
 class UserDAO extends DAO
 {
@@ -188,18 +188,5 @@ class UserDAO extends DAO
                 FROM user 
                 WHERE id = ?';
         $this->createQuery($sql, [$userId]);
-    }
-
-    /**
-     * @param string $pseudo
-     * @return mixed
-     */
-    public function countComments(string $pseudo)
-    {
-        $sql = 'SELECT COUNT(id) 
-                FROM comment 
-                WHERE pseudo = ?';
-        $result = $this->createQuery($sql, [$pseudo]);
-        return $result->fetchColumn();
     }
 }
