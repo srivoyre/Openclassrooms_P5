@@ -26,6 +26,28 @@ class SavedJokeDAO extends DAO
         return $savedJoke;
     }
 
+    public function getSavedJoke(string $jokeApiId, string $userId)
+    {
+        $sql = 'SELECT id, user_id, joke_api_id, createdAt 
+                FROM savedJoke 
+                WHERE user_id = ?
+                    AND joke_api_id = ?
+                ORDER BY createdAt DESC';
+
+        $result = $this->createQuery($sql, [
+            $userId,
+            $jokeApiId
+        ]);
+        $savedJoke = $result->fetch();
+        $result->closeCursor();
+
+        if($savedJoke) {
+            return $this->buildObject($savedJoke);
+        }
+
+        return $savedJoke;
+    }
+
     public function getSavedJokes(string $userId)
     {
         // We do not filter jokes saved by user. If the joke has been reported by another user,
@@ -37,10 +59,11 @@ class SavedJokeDAO extends DAO
                 ORDER BY createdAt DESC';
         $result = $this->createQuery($sql,[$userId]);
         $savedJokes = [];
-
-        foreach ($result as $row) {
-            $savedJokeId = $row['id'];
-            $savedJokes[$savedJokeId] = $this->buildObject($row);
+        if($savedJokes) {
+            foreach ($result as $row) {
+                $savedJokeId = $row['id'];
+                $savedJokes[$savedJokeId] = $this->buildObject($row);
+            }
         }
 
         $result->closeCursor();

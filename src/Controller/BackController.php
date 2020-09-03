@@ -55,6 +55,10 @@ class BackController extends Controller
         }
     }
 
+    public function checkExistingSavedJoke()
+    {
+        if ($this->checkLoggedIn()) {
+    }
     /**
      * @return View
      */
