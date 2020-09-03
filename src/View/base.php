@@ -135,9 +135,11 @@
         </div>
 
         <div id="content" class="row">
-            <div class="col-12">
+            <div class="col-1"></div>
+            <div class="col-10">
                 <?= filter_var($content) ?>
             </div>
+            <div class="col-1"></div>
         </div>
 
     </body>
