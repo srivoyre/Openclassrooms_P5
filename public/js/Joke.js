@@ -11,5 +11,4 @@ class Joke {
         this.setup = param.setup;
         this.delivery = param.delivery;
     }
-
 }
