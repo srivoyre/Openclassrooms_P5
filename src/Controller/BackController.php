@@ -3,6 +3,7 @@
 namespace App\src\Controller;
 
 use App\src\Parameter;
+use http\Client\Curl\User;
 
 /**
  * Class BackController
@@ -46,18 +47,29 @@ class BackController extends Controller
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
-            $this->savedJokeDAO->addSavedJoke($get->get('jokeApiId'), $this->session->get('user')->getId());
-            $this->session->set(
-                'success_message',
-                'This joke has been saved! You can find it in your profile page.'
-            );
+            $jokeApiId = $get->get('jokeApiId');
+            $userId = $this->session->get('user')->getId();
+            if(!$this->isExistingSavedJoke($jokeApiId, $userId)) {
+                $this->savedJokeDAO->addSavedJoke($jokeApiId, $userId);
+                $this->session->set(
+                    'success_message',
+                    'This joke has been saved! You can find it in your profile page.'
+                );
+            } else {
+                $this->session->set(
+                    'info_message',
+                    'You already saved this joke!'
+                );
+            }
             header('Location: index.php');
         }
     }
 
-    public function checkExistingSavedJoke()
+    public function isExistingSavedJoke(string $jokeApiId, string $userId)
     {
         if ($this->checkLoggedIn()) {
+            return $this->savedJokeDAO->getSavedJoke($jokeApiId, $userId);
+        }
     }
     /**
      * @return View
