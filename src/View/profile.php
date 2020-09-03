@@ -6,6 +6,21 @@
         <h1><?= filter_var($user->getPseudo()); ?></h1>
         <p>Membre depuis le <?= filter_var($user->getCreatedAt()); ?></p>
 
+        <?php
+        foreach ($savedJokes as $savedJoke) {
+        ?>
+            <script type="text/javascript">
+                specifiedJoke(<?= $savedJoke->getJokeApiId(); ?>);
+            </script>
+            <div id="jokes-container" class="row">
+
+            </div>
+        <?php
+        }
+        ?>
+        <div class="row">
+        </div>
+
         <form method="post" action="index.php?route=updateEmail">
             <div class="form-group">
                 <div class="row">
