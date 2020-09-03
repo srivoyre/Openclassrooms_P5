@@ -1,3 +1,5 @@
+let savedJokesArray;
+
 /*************************************
  * standard functions
  ************************************/
@@ -8,12 +10,11 @@ function showElement(element) {
     element.classList.remove('d-none');
 }
 
+// Hides the joke container before a joke is returned on home page
 document.addEventListener('DOMContentLoaded',(event) =>{
-    let jokeN = document.getElementById('joke');
-    if(jokeN.innerHTML === '') {
+    if (document.getElementById('joke')
+        && document.getElementById('joke').innerHTML === '') {
         hideElement(document.getElementById('joke-container'));
-    } else {
-        console.log(jokeN.innerHTML);
     }
 })
 
@@ -27,12 +28,22 @@ function setDynamicApiId(elementId, jokeId) {
 }
 const processUniqueResult = function (result) {
     let joke = new Joke(JSON.parse(result));
+    console.log(joke.id);
     // processing results
     if (joke.type == "single") {
         document.getElementById('joke').innerHTML = joke.joke;
     } else {
         document.getElementById('joke').innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
     }
+    console.log(savedJokesArray.indexOf(joke.id));
+    if(savedJokesArray.indexOf(joke.id) !== -1) {
+        hideElement(document.getElementById('saveJokeBtn'));
+        showElement(document.getElementById('saved-icon'));
+    } else {
+        hideElement(document.getElementById('saved-icon'));
+        showElement(document.getElementById('saveJokeBtn'));
+    }
+
     setDynamicApiId('saveJokeBtn', joke.id);
     setDynamicApiId('flagJokeBtn', joke.id);
     showElement(document.getElementById('joke-container'));
@@ -57,11 +68,12 @@ const processMultipleResults = function (result) {
 }
 
 function randomJoke() {
-    let ajax = new XHRRequest(processUniqueResult, '1-100');
+    let ajax = new XHRRequest(processUniqueResult, '');
 }
 function specifiedJoke(jokeApiId) {
     let ajax = new XHRRequest(processMultipleResults, jokeApiId.toString());
 }
+
 /*function specifiedJokesArray(array) {
     // Calls all jokes whose id is in the array
     // returns array of jokes
