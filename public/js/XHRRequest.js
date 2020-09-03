@@ -1,6 +1,6 @@
 class XHRRequest {
 
-    constructor(callback, p_idRange = 1-100) {
+    constructor(callback, p_idRange = '1-100') {
         this.baseURL = 'https://sv443.net/jokeapi/v2';
         this.categories = ['Programming', 'Miscellaneous', 'Pun'];
         this.params = [
