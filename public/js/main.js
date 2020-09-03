@@ -37,11 +37,31 @@ const processUniqueResult = function (result) {
     setDynamicApiId('flagJokeBtn', joke.id);
     showElement(document.getElementById('joke-container'));
 }
+const processMultipleResults = function (result) {
+    let joke = new Joke(JSON.parse(result));
+    let jokesContainer = document.getElementById('jokes-container');
+    let newJokeContainer = document.createElement('div');
+    newJokeContainer.id = 'joke-container'+joke.id;
+    newJokeContainer.classList.add('row', 'joke-container');
+    let newJokeElement = document.createElement('span');
+    newJokeElement.id = 'joke'+joke.id;
+    newJokeElement.classList.add('joke', 'align-middle');
+    newJokeContainer.appendChild(newJokeElement);
+    jokesContainer.appendChild(newJokeContainer);
+
+    if (joke.type == "single") {
+        document.getElementById('joke'+joke.id).innerHTML = joke.joke;
+    } else {
+        document.getElementById('joke'+joke.id).innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
+    }
+}
 
 function randomJoke() {
     let ajax = new XHRRequest(processUniqueResult, '1-100');
 }
-
+function specifiedJoke(jokeApiId) {
+    let ajax = new XHRRequest(processMultipleResults, jokeApiId.toString());
+}
 /*function specifiedJokesArray(array) {
     // Calls all jokes whose id is in the array
     // returns array of jokes
