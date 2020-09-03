@@ -44,6 +44,19 @@ class BackController extends Controller
         }
     }
 
+    public function home()
+    {
+        if ($this->checkLoggedIn()) {
+            $savedJokes = $this->savedJokeDAO->getSavedJokes($this->session->get('user')->getId());
+            $savedJokesArray = [];
+            foreach($savedJokes as $savedJoke) {
+                array_push($savedJokesArray, $savedJoke->getJokeApiId());
+            }
+            return $this->view->render('home', [
+                'savedJokesArray' => $savedJokesArray
+            ]);
+        }
+    }
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
@@ -71,6 +84,7 @@ class BackController extends Controller
             return $this->savedJokeDAO->getSavedJoke($jokeApiId, $userId);
         }
     }
+
     /**
      * @return View
      */

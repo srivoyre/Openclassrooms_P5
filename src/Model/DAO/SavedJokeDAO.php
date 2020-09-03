@@ -51,7 +51,7 @@ class SavedJokeDAO extends DAO
     public function getSavedJokes(string $userId)
     {
         // We do not filter jokes saved by user. If the joke has been reported by another user,
-        // those who saved it can still see it appear in their profiles.
+        // users who saved it can still see it appear in their profiles.
 
         $sql = 'SELECT id, user_id, joke_api_id, createdAt 
                 FROM savedJoke 
@@ -65,9 +65,7 @@ class SavedJokeDAO extends DAO
                 $savedJokes[$savedJokeId] = $this->buildObject($row);
             }
         }
-
         $result->closeCursor();
-
         return $savedJokes;
     }
 

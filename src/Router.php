@@ -36,6 +36,8 @@ class Router
         try {
             if (isset($route)) {
                 $this->route($route);
+            } elseif ($this->request->getSession()->get('user')) {
+                $this->backController->home();
             } else {
                 $this->frontController->home();
             }
