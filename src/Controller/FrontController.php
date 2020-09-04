@@ -23,38 +23,55 @@ class FrontController extends Controller
         ]);
     }
 
+    private function checkUserInfo(Parameter $post)
+    {
+        $errors = $this->validation->validate($post, 'User');
+
+        if ($this->userDAO->checkUser(
+            $post,
+            'pseudo',
+            'pseudo',
+            'register'))
+        {
+            $errors['pseudo'] = $this->userDAO->checkUser($post, 'pseudo', 'pseudo','register');
+        }
+
+        if ($this->userDAO->checkUser(
+            $post,
+            'email',
+            'email',
+            'register'))
+        {
+            $errors['email'] = $this->userDAO->checkUser($post, 'email', 'email', 'register');
+        }
+
+        return $errors;
+
+        }
+
     /**
      * @param Parameter $post
      * @return View
      */
     public function register(Parameter $post)
     {
-        if ($post->get('submit')) {
-            $errors = $this->validation->validate($post, 'User');
-            if ($this->userDAO->checkUser($post, 'pseudo', 'pseudo', 'register')) {
-                $errors['pseudo'] = $this->userDAO->checkUser($post, 'pseudo', 'pseudo','register');
-            }
-
-            if ($this->userDAO->checkUser($post, 'email', 'email', 'register')) {
-                $errors['email'] = $this->userDAO->checkUser($post, 'email', 'email', 'register');
-            }
-
-            if (!$errors) {
-                $this->userDAO->register($post);
-                $this->login($post);
-                $this->session->set(
-                    'success_message',
-                    'Welcome! You have successfully registered.'
-                );
-                header('Location: index.php?route=profile');
-            }
-
-            return $this->view->render('register', [
-                'post' => $post,
-                'errors' => $errors
-            ]);
+        if (!$post->get('submit')) {
+            return $this->view->render('register');
         }
-        return $this->view->render('register');
+        $errors = $this->checkUserInfo($post);
+        if (!$errors) {
+            $this->userDAO->register($post);
+            $this->login($post);
+            $this->session->set(
+                'success_message',
+                'Welcome! You have successfully registered.'
+            );
+            header('Location: index.php?route=profile');
+        }
+        return $this->view->render('register', [
+            'post' => $post,
+            'errors' => $errors
+        ]);
     }
 
     /**
