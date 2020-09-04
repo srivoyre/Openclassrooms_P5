@@ -137,7 +137,7 @@ class BackController extends Controller
             $this->flaggedJokeDAO->filterJoke($get->get('jokeId'));
             $this->session->set(
                 'success_message',
-                'The joke has successfully been filtered! From now on, it will not be displayed to your visitors.'
+                'The joke has successfully been filtered! From now on, it will never be displayed to your visitors.'
             );
             header('Location: index.php?route=administration');
         }
