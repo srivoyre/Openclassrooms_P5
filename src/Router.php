@@ -5,6 +5,7 @@ namespace App\src;
 use App\src\Controller\FrontController;
 use App\src\Controller\BackController;
 use App\src\Controller\ErrorController;
+use App\src\Controller\JokesController;
 use Exception;
 
 /**
@@ -17,6 +18,7 @@ class Router
     private $frontController;
     private $backController;
     private $errorController;
+    private $jokesController;
 
     /**
      * Router constructor.
@@ -27,6 +29,7 @@ class Router
         $this->frontController = new FrontController();
         $this->backController = new BackController();
         $this->errorController = new ErrorController();
+        $this->jokesController = new JokesController();
     }
 
     public function run()
@@ -54,19 +57,19 @@ class Router
     {
         switch ($route) {
             case 'saveJoke' :
-                $this->backController->saveJoke($this->request->getGet());
+                $this->jokesController->saveJoke($this->request->getGet());
                 break;
             case 'removeJoke' :
-                $this->backController->removeSavedJoke($this->request->getGet());
+                $this->jokesController->removeSavedJoke($this->request->getGet());
                 break;
             case 'flagJoke' :
-                $this->frontController->flagJoke($this->request->getGet());
+                $this->jokesController->flagJoke($this->request->getGet());
                 break;
             case 'unflagJoke' :
-                $this->backController->unflagJoke($this->request->getGet());
+                $this->jokesController->unflagJoke($this->request->getGet());
                 break;
             case 'filterJoke' :
-                $this->backController->filterJoke($this->request->getGet());
+                $this->jokesController->filterJoke($this->request->getGet());
                 break;
             case 'register':
                 $this->frontController->register($this->request->getPost());
