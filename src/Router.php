@@ -62,6 +62,12 @@ class Router
             case 'flagJoke' :
                 $this->frontController->flagJoke($this->request->getGet());
                 break;
+            case 'unflagJoke' :
+                $this->backController->unflagJoke($this->request->getGet());
+                break;
+            case 'filterJoke' :
+                $this->backController->filterJoke($this->request->getGet());
+                break;
             case 'register':
                 $this->frontController->register($this->request->getPost());
                 break;

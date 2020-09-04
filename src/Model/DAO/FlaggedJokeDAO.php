@@ -64,8 +64,8 @@ class FlaggedJokeDAO extends DAO
                 VALUES(?,?,?,NOW())';
         $this->createQuery($sql, [
             $jokeApiId,
-            0,
-            1
+            1,
+            0
         ]);
     }
 
@@ -76,6 +76,17 @@ class FlaggedJokeDAO extends DAO
                 WHERE joke_api_id = :jokeApiId';
         $this->createQuery($sql, [
             'jokeApiId' => $jokeApiId
+        ]);
+    }
+
+    public function filterJoke(string $jokeId)
+    {
+        $sql = 'UPDATE flaggedJoke 
+                SET filtered = :bool 
+                WHERE id = :jokeId';
+        $this->createQuery($sql, [
+            'bool' => 1,
+            'jokeId' => $jokeId
         ]);
     }
 

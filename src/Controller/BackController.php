@@ -118,6 +118,30 @@ class BackController extends Controller
             return $savedJokesArray;
         }
     }
+
+    public function unflagJoke(Parameter $get)
+    {
+        if ($this->checkAdmin()) {
+            $this->flaggedJokeDAO->deleteFlaggedJoke($get->get('jokeId'));
+            $this->session->set(
+                'success_message',
+                'The joke has successfully been unflagged!'
+            );
+            header('Location: index.php?route=administration');
+        }
+    }
+
+    public function filterJoke(Parameter $get)
+    {
+        if ($this->checkAdmin()) {
+            $this->flaggedJokeDAO->filterJoke($get->get('jokeId'));
+            $this->session->set(
+                'success_message',
+                'The joke has successfully been filtered! From now on, it will never be displayed to your visitors.'
+            );
+            header('Location: index.php?route=administration');
+        }
+    }
     /**
      * @return View
      */

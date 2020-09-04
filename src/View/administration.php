@@ -26,6 +26,15 @@
 
         <tbody>
         <?php
+        if ($flaggedJokes == null) {
+            ?>
+            <tr>
+                <td colspan="2" class="text-center font-italic font-weight-bold">
+                    No reported jokes yet!
+                </td>
+            </tr>
+            <?php
+        }
         foreach($flaggedJokes as $flaggedJoke)
         {
             ?>
@@ -67,10 +76,19 @@
                 <th class="col-lg-3" scope="col">Email</th>
                 <th class="col-lg-2" scope="col">Date de création</th>
                 <th class="col-lg-3" scope="col">Rôle</th>
-                <th class="col-lg-2" class="text-right" scope="col">Actions</th>
+                <th class="col-lg-2 text-right" scope="col">Actions</th>
             </tr>
         </thead>
         <?php
+        if ($users == null) {
+            ?>
+            <tr>
+                <td colspan="5" class="text-center font-italic font-weight-bold">
+                    No users to manage yet!
+                </td>
+            </tr>
+            <?php
+        }
         foreach($users as $user)
         {
             ?>
@@ -111,7 +129,7 @@
                 <td class=" col-12 col-lg-3">
                     <?= filter_var($user->getRole(), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?> user
                 </td>
-                <td class="d-none d-lg-block col-lg-2">
+                <td class="d-none d-lg-block col-lg-2 text-right">
                     <?php
                     if(!$user->getIsAdmin())
                     {
