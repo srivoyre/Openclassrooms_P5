@@ -10,11 +10,11 @@ var_dump($savedJokesArray);
         </h1>
         <div class="row mb-5">
             <div class="col-1"></div>
-            <div id="joke-container" class="col-10 joke-container text-center py-5">
+            <div id="joke-container" class="col-10 text-center py-5">
                 <script type="text/javascript">
                     savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
                 </script>
-                <a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=" title="Add joke to favourites">
+                <!--<a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=" title="Add joke to favourites">
                     <i class="far fa-star"></i>
                 </a>
                 <a type="button" id="removeSavedJokeBtn" class="btn" href="index.php?route=removeJoke&jokeApiId=" data-toggle="tooltip" data-placement="top" title="Remove joke from favourites">
@@ -24,8 +24,8 @@ var_dump($savedJokesArray);
                 <a type="button" id="flagJokeBtn" class="btn btn-outline-danger" href="index.php?route=flagJoke&jokeApiId=">
                     <i class="far fa-flag"></i>
                 </a>
-                <!--<i class="fas fa-flag"></i>-->
-                <span id="joke" class="align-middle joke"></span>
+                <i class="fas fa-flag"></i>
+                <span id="joke" class="align-middle joke"></span>-->
             </div>
             <div class="col-1"></div>
         </div>

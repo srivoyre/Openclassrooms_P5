@@ -7,9 +7,11 @@
         <p>Membre depuis le <?= filter_var($user->getCreatedAt()); ?></p>
 
         <div id="jokes-container" class="row">
+            <script type="text/javascript">
+                savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
+            </script>
             <?php
-            foreach ($savedJokes as $savedJoke) {
-                var_dump($savedJoke);
+            foreach ($savedJokesArray as $savedJoke) {
             ?>
             <script type="text/javascript">
                 specifiedJoke(<?= $savedJoke; ?>);
