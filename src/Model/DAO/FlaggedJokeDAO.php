@@ -64,8 +64,8 @@ class FlaggedJokeDAO extends DAO
                 VALUES(?,?,?,NOW())';
         $this->createQuery($sql, [
             $jokeApiId,
-            0,
-            1
+            1,
+            0
         ]);
     }
 
