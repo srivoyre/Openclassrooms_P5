@@ -12,12 +12,15 @@ var_dump($savedJokesArray);
             <div class="col-1"></div>
             <div id="joke-container" class="col-10 joke-container text-center py-5">
                 <script type="text/javascript">
-                    //savedJokesArray = <?php //echo $savedJokesArray; ?>
+                    savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
                 </script>
-                <a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=">
+                <a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=" alt="Add joke to favourites">
                     <i class="far fa-star"></i>
                 </a>
-                <i id="saved-icon" class="fas fa-star" style="color: #FFD700"></i>
+                <a type="button" id="saveJokeBtn" class="btn" href="index.php?route=saveJoke&jokeApiId=" alt="Remove joke in favourites">
+                    <i id="saved-icon" class="fas fa-star" style="color: #FFD700"></i>
+                </a>
+
                 <a type="button" id="flagJokeBtn" class="btn btn-outline-danger" href="index.php?route=flagJoke&jokeApiId=">
                     <i class="far fa-flag"></i>
                 </a>

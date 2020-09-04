@@ -41,8 +41,9 @@ const processUniqueResult = function (result) {
     } else {
         document.getElementById('joke').innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
     }
-    console.log(savedJokesArray.indexOf(joke.id));
-    if(savedJokesArray.indexOf(joke.id) !== -1) {
+    console.log(savedJokesArray);
+    console.log(savedJokesArray.indexOf(joke.id.toString()));
+    if(savedJokesArray.indexOf(joke.id.toString()) !== -1) {
         hideElement(document.getElementById('saveJokeBtn'));
         showElement(document.getElementById('saved-icon'));
     } else {
@@ -77,7 +78,7 @@ const processMultipleResults = function (result) {
  * functions called by user interaction
  ****************************************/
 function randomJoke() {
-    new XHRRequest(processUniqueResult, '');
+    new XHRRequest(processUniqueResult, '99');
 }
 function specifiedJoke(jokeApiId) {
     new XHRRequest(processMultipleResults, jokeApiId.toString());

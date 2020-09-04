@@ -1,24 +1,22 @@
 <?php $this->title = 'Mon profil'; ?>
-<?php $loggedIn = isset($this->session) && $this->session->get('user')->getPseudo(); ?>
+
 
 <div class="row">
     <div class="col-12">
         <h1><?= filter_var($user->getPseudo()); ?></h1>
         <p>Membre depuis le <?= filter_var($user->getCreatedAt()); ?></p>
 
-        <?php
-        foreach ($savedJokes as $savedJoke) {
-        ?>
+        <div id="jokes-container" class="row">
+            <?php
+            foreach ($savedJokes as $savedJoke) {
+                var_dump($savedJoke);
+            ?>
             <script type="text/javascript">
-                specifiedJoke(<?= $savedJoke->getJokeApiId(); ?>);
+                specifiedJoke(<?= $savedJoke; ?>);
             </script>
-            <div id="jokes-container" class="row">
-
-            </div>
-        <?php
-        }
-        ?>
-        <div class="row">
+                <?php
+            }
+            ?>
         </div>
 
         <form method="post" action="index.php?route=updateEmail">
