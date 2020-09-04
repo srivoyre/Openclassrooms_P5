@@ -1,3 +1,6 @@
+/*************************************
+ * variables declaration
+ ************************************/
 let savedJokesArray;
 
 /*************************************
@@ -17,7 +20,9 @@ document.addEventListener('DOMContentLoaded',(event) =>{
         hideElement(document.getElementById('joke-container'));
     }
 })
-
+/****************************************
+ * App features
+ ****************************************/
 function setDynamicApiId(elementId, jokeId) {
     let url = new URL(document.getElementById(elementId).getAttribute('href'), 'http://localhost:8080/projects/OC_P5/public/');
     let search_params = url.searchParams;
@@ -26,6 +31,7 @@ function setDynamicApiId(elementId, jokeId) {
     let new_url = url.toString();
     document.getElementById(elementId).setAttribute('href', new_url);
 }
+
 const processUniqueResult = function (result) {
     let joke = new Joke(JSON.parse(result));
     console.log(joke.id);
@@ -48,6 +54,7 @@ const processUniqueResult = function (result) {
     setDynamicApiId('flagJokeBtn', joke.id);
     showElement(document.getElementById('joke-container'));
 }
+
 const processMultipleResults = function (result) {
     let joke = new Joke(JSON.parse(result));
     let jokesContainer = document.getElementById('jokes-container');
@@ -66,23 +73,12 @@ const processMultipleResults = function (result) {
         document.getElementById('joke'+joke.id).innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
     }
 }
-
+/****************************************
+ * functions called by user interaction
+ ****************************************/
 function randomJoke() {
-    let ajax = new XHRRequest(processUniqueResult, '');
+    new XHRRequest(processUniqueResult, '');
 }
 function specifiedJoke(jokeApiId) {
-    let ajax = new XHRRequest(processMultipleResults, jokeApiId.toString());
+    new XHRRequest(processMultipleResults, jokeApiId.toString());
 }
-
-/*function specifiedJokesArray(array) {
-    // Calls all jokes whose id is in the array
-    // returns array of jokes
-    for(let i = 0; i<array.length ; i++) {
-        let joke = new Joke(i);
-        console.log(joke);
-    }*/
-    /*array.foreach(item => {
-        let joke = new Joke(item);
-        console.log(joke);
-    });*/
-//}
