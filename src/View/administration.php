@@ -1,15 +1,9 @@
 <?php $this->title = 'Administration'; ?>
+<?php $this->h1 = 'Administration'; ?>
+
 <script type="text/javascript">
     showJokesInAdminSpace = true;
 </script>
-
-<h1>
-    Administration
-</h1>
-
-<div class="my-5">
-    <hr>
-</div>
 
 <section>
 

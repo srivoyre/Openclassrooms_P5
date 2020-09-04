@@ -1,9 +1,9 @@
 <?php $this->title = 'Mon profil'; ?>
-
+<?php $this->h1 = 'Profile'; ?>
 
 <div class="row">
     <div class="col-12">
-        <h1><?= filter_var($user->getPseudo()); ?></h1>
+        <h2><?= filter_var($user->getPseudo()); ?></h2>
         <p>Membre depuis le <?= filter_var($user->getCreatedAt()); ?></p>
 
         <div id="jokes-container" class="row">

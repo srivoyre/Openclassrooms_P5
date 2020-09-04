@@ -86,6 +86,16 @@
         </header>
 
         <div class="row mt-3">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h1>
+                    <?= filter_var($h1); ?>
+                </h1>
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+        <div class="row mt-3">
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
             <div class="col-10 col-sm-8 col-md-6 col-lg-4">
                 <div class="message">
@@ -131,12 +141,12 @@
                 </div>
             </div>
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
-        </div>
+        </div>;
 
         <div id="content" class="row">
             <div class="col-1"></div>
             <div class="col-10">
-                <?= filter_var($content) ?>
+                <?= filter_var($content); ?>
             </div>
             <div class="col-1"></div>
         </div>

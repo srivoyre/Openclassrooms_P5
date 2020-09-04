@@ -1,4 +1,5 @@
-<?php $this->title = "Accueil"; ?>
+<?php $this->title = 'Accueil'; ?>
+
 <script type="text/javascript">
     filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
     savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
