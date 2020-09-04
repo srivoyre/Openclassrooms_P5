@@ -72,7 +72,7 @@ class JokesController extends BackController
         }
         $this->session->set(
             'success_message',
-            'This joke has been reported!'
+            'This joke has been reported! It will be reviewed by our team shortly.'
         );
         header('Location: index.php');
     }

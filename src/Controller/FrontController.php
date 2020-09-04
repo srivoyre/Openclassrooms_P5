@@ -23,21 +23,6 @@ class FrontController extends Controller
         ]);
     }
 
-    /*public function flagJoke(Parameter $get)
-    {
-        $jokeApiId = (int)$get->get('jokeApiId');
-        if($this->flaggedJokeDAO->isFlaggedJoke($jokeApiId)) {
-            $this->flaggedJokeDAO->flagExistingJoke($jokeApiId);
-        } else {
-            $this->flaggedJokeDAO->addFlaggedJoke($jokeApiId);
-        }
-        $this->session->set(
-            'success_message',
-            'This joke has been reported!'
-        );
-        header('Location: index.php');
-    }*/
-
     /**
      * @param Parameter $post
      * @return View
@@ -59,9 +44,9 @@ class FrontController extends Controller
                 $this->login($post);
                 $this->session->set(
                     'success_message',
-                    'Votre inscription a bien été effectuée'
+                    'Welcome! You have successfully registered.'
                 );
-                header('Location: index.php');
+                header('Location: index.php?route=profile');
             }
 
             return $this->view->render('register', [
@@ -98,13 +83,13 @@ class FrontController extends Controller
                 $this->session->set('user', $checkPassword['user']);
                 $this->session->set(
                     'info_message',
-                    'Content de vous revoir '.$this->session->get('user')->getPseudo(). ' !'
+                    'Nice to see you again '.$this->session->get('user')->getPseudo(). ' !'
                 );
                 header('Location: index.php');
             } else {
                 $this->session->set(
                     'error_message',
-                    'Le pseudo et/ou le mot de passe sont incorrects'
+                    'Invalid username / password.'
                 );
                 return $this->view->render('login', [
                     'post' => $post

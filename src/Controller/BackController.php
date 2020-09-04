@@ -19,7 +19,7 @@ class BackController extends Controller
         if (!$this->session->get('user')) {
             $this->session->set(
                 'warning_message',
-                'Vous devez vous connecter pour accéder à cette page'
+                'You need to be logged in to perform this action!'
             );
             header('Location: index.php?route=login');
         } else {
@@ -36,7 +36,7 @@ class BackController extends Controller
         if (!($this->session->get('user')->getIsAdmin())) {
             $this->session->set(
                 'warning_message',
-                'Vous ne disposez pas des autorisations suffisantes pour accéder à cette page'
+                'You do not have sufficient permission to access this page.'
             );
             header('Location: index.php?route=errorPermission');
         } else {
@@ -102,7 +102,7 @@ class BackController extends Controller
                         $this->userDAO->updatePassword($post, $this->session->get('user')->getPseudo());
                         $this->session->set(
                             'success_message',
-                            'Votre mot de passe a été mis à jour'
+                            'Your password has been successfully updated!'
                         );
                     }
                     return $this->view->render('update_password', [
@@ -111,7 +111,7 @@ class BackController extends Controller
                 }
                 $this->session->set(
                     'error_message',
-                    'Le mot de passe actuel est incorrect'
+                    'Incorrect current password.'
                 );
             }
             return $this->view->render('update_password');
@@ -131,7 +131,7 @@ class BackController extends Controller
                     $this->userDAO->updateEmail($post, $this->session->get('user')->getPseudo());
                     $this->session->set(
                         'success_message',
-                        'Votre adresse e-mail a été mise à jour'
+                        'Your email address has been successfully updated!'
                     );
                     header('Location: index.php?route=profile');
                 }
@@ -168,7 +168,7 @@ class BackController extends Controller
             $this->userDAO->deleteUser($userId);
             $this->session->set(
                 'success_message',
-                'L\'utilisateur a bien été supprimé'
+                'The user has been successfully deleted!'
             );
             header('Location: index.php?route=administration');
         }
@@ -182,11 +182,14 @@ class BackController extends Controller
         $this->session->stop();
         $this->session->start();
         if ($param === 'logout') {
-            $this->session->set('info_message', 'À bientôt');
+            $this->session->set(
+                'info_message',
+                'See you soon!'
+            );
         } else {
             $this->session->set(
                 'success_message',
-                'Votre compte a bien été supprimé'
+                'Your account has been successfully deleted!'
             );
         }
         header('Location: index.php');
