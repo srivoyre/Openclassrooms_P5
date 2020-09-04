@@ -26,6 +26,15 @@
 
         <tbody>
         <?php
+        if ($flaggedJokes == null) {
+            ?>
+            <tr>
+                <td colspan="2" class="text-center font-italic font-weight-bold">
+                    No reported jokes yet!
+                </td>
+            </tr>
+            <?php
+        }
         foreach($flaggedJokes as $flaggedJoke)
         {
             ?>
@@ -71,6 +80,15 @@
             </tr>
         </thead>
         <?php
+        if ($users == null) {
+            ?>
+            <tr>
+                <td colspan="5" class="text-center font-italic font-weight-bold">
+                    No users to manage yet!
+                </td>
+            </tr>
+            <?php
+        }
         foreach($users as $user)
         {
             ?>
