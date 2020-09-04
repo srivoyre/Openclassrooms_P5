@@ -85,6 +85,18 @@ class BackController extends Controller
         }
     }
 
+    public function removeSavedJoke(Parameter $get)
+    {
+        if ($this->checkLoggedIn()) {
+            $this->savedJokeDAO->deleteSavedJoke($get->get('jokeApiId'), $this->session->get('user')->getId());
+            $this->session->set(
+                'success_message',
+                'The joke has successfully been removed from your favourites!'
+            );
+            header('Location: index.php');
+        }
+    }
+
     /**
      * @return View
      */
