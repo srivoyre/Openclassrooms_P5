@@ -1,11 +1,13 @@
 <?php $this->title = "Erreur 500: erreur interne du serveur"; ?>
 
-<a type="button" class="btn btn-light mb-5" href="index.php"><< Retour à l'accueil</a>
+<a type="button" class="btn btn-light mb-5" href="index.php"><< Back to homepage</a>
 
-<h1>
-    <?= filter_var($this->title, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
-</h1>
-
-<p>
-    Oups ! Une erreur est survenue, veuillez rechargez la page ou revenir à l'accueil.
-</p>
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h1>Oops!</h1>
+            <h2>500 - Something went wrong</h2>
+        </div>
+        <a type="button" class="btn btn-light mb-5" href="index.php">Go To Homepage</a>
+    </div><!-- This templates was made by Colorlib (https://colorlib.com)-->
+</div>
