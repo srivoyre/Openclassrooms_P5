@@ -2,7 +2,7 @@
  * variables declaration
  ************************************/
 let savedJokesArray;
-
+let showJokesInAdminSpace;
 /*************************************
  * standard functions
  ************************************/
@@ -82,6 +82,22 @@ function createJokeContainer(joke) {
     return containerTemplate;
 }
 
+function createJokeRow(joke) {
+    const jokeContent = () => {
+        if (joke.type == "single") {
+            return joke.joke;
+        } else {
+            return joke.setup + '<br /> <br />' + joke.delivery;
+        }
+    }
+    let containerTemplate = document.createElement('span');
+    containerTemplate.id = 'joke' + joke.id;
+    containerTemplate.classList.add('joke');
+    containerTemplate.innerHTML = jokeContent();
+
+    return containerTemplate;
+}
+
 function manageActionButtons(jokeId) {
     let saveBtn = document.getElementById('saveJokeBtn'+jokeId);
     let unsaveBtn = document.getElementById('removeSavedJokeBtn'+jokeId);
@@ -110,8 +126,12 @@ const processUniqueResult = function (result) {
 const processMultipleResults = function (result) {
     let joke = new Joke(JSON.parse(result));
     let jokesContainer = document.getElementById('jokes-container');
-    jokesContainer.appendChild(createJokeContainer(joke));
-    manageActionButtons(joke.id)
+    if (showJokesInAdminSpace) {
+        document.getElementById('joke-container'+joke.id).appendChild(createJokeRow(joke));
+    } else {
+        jokesContainer.appendChild(createJokeContainer(joke));
+        manageActionButtons(joke.id);
+    }
 }
 /****************************************
  * functions called by user interaction
