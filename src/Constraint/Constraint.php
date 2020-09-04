@@ -29,7 +29,7 @@ class Constraint
     public function minLength(string $name, $value, int $minSize)
     {
         if (strlen($value) < $minSize) {
-            return '<p>Le champ '.$name.' doit contenir au moins '.$minSize.' caractères</p>';
+            return '<p>'.$name.' field must contain at least '.$minSize.' characters</p>';
         }
     }
 
@@ -42,7 +42,7 @@ class Constraint
     public function maxLength(string $name, $value, int $maxSize)
     {
         if (strlen($value) > $maxSize) {
-            return '<p>Le champ '.$name.' doit contenir au maximum '.$maxSize.' caractères</p>';
+            return '<p>'.$name.' must contain a maximum of '.$maxSize.' characters</p>';
         }
     }
 
@@ -53,7 +53,7 @@ class Constraint
     public function isPositiveInteger($value)
     {
         if (!is_int($value + 0) || ($value +0) < 0) {
-            return '<p>Veuillez saisir un nombre entier positif </p>';
+            return '<p>Please, enter a positive whole number</p>';
         }
     }
 
@@ -64,7 +64,7 @@ class Constraint
     public function isEmail($value)
     {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            return '<p>Veuillez saisir une adresse e-mail valide </p>';
+            return '<p>Please, enter a valid email</p>';
         }
     }
 

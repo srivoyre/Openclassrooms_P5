@@ -12,25 +12,27 @@
         <link rel="canonical" href="onlineprojects.fr">
         <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 
-        <meta name="description" content="Billet simple pour l'Alaska : le nouveau roman de Jean Forteroche publié en ligne">
+        <meta name="description" content="Random Joke Generator">
         <meta name="author"     content="Sophie de Rivoyre">
         <meta name="copyright"  content="MIT">
 
         <meta property="og:type"        content="website">
-        <meta property="og:title"       content="Billet simple pour l'Alaska">
-        <meta property="og:url"         content="onlineprojects.fr">
-        <meta property="og:description" content="Billet simple pour l'Alaska : le nouveau roman de Jean Forteroche publié en ligne">
+        <meta property="og:title"       content="Random Joke Generator">
+        <meta property="og:url"         content="randomjokegenerator.onlineprojects.fr">
+        <meta property="og:description" content="Random Joke Generator">
         <meta property="og:image"       content="img/logo.png">
 
         <meta name="twitter:card"           content="summary">
-        <meta name="twitter:title"          content="Billet simple pour l'Alaska">
-        <meta name="twitter:site"           content="onlineprojects.fr">
-        <meta name="twitter:description"    content="Billet simple pour l'Alaska : le nouveau roman de Jean Forteroche publié en ligne">
+        <meta name="twitter:title"          content="Random Joke Generator">
+        <meta name="twitter:site"           content="randomjokegenerator.onlineprojects.fr">
+        <meta name="twitter:description"    content="Random Joke Generator">
         <meta name="twitter:image"          content="img/logo.png">
         <meta name="twitter:creator"        content="@sophiederivoyre">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/error.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 
         <!--jQuery, Poppers.js, Bootstrap JS, then custom scripts -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -50,16 +52,13 @@
         <header>
 
             <nav class="navbar navbar-expand-lg navbar-light">
-                <a class="navbar-brand" href="index.php">
-                    <!--<img alt="P5" src="img/logo.png" id="logo"/>-->
-                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-link" href="index.php">Accueil</a>
+                        <a class="nav-link" href="index.php">Home</a>
                         <?php
                         if($this->session->get('loggedIn'))
                         {
@@ -69,15 +68,15 @@
                                 <?php
                             }
                             ?>
-                            <a class="nav-link" href="index.php?route=profile">Profil</a>
-                            <a class="nav-link" href="index.php?route=logout">Déconnexion</a>
+                            <a class="nav-link" href="index.php?route=profile">Profile</a>
+                            <a class="nav-link" href="index.php?route=logout">Logout</a>
                             <?php
                         }
                         else
                         {
                             ?>
-                            <a class="nav-link" href="index.php?route=register">Inscription</a>
-                            <a class="nav-link" href="index.php?route=login">Connexion</a>
+                            <a class="nav-link" href="index.php?route=register">Register</a>
+                            <a class="nav-link" href="index.php?route=login">Login</a>
                             <?php
                         }
                         ?>
@@ -85,6 +84,16 @@
                 </div>
             </nav>
         </header>
+
+        <div class="row mt-3">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <h1>
+                    <?= filter_var($h1); ?>
+                </h1>
+            </div>
+            <div class="col-1"></div>
+        </div>
 
         <div class="row mt-3">
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
@@ -132,12 +141,12 @@
                 </div>
             </div>
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
-        </div>
+        </div>;
 
         <div id="content" class="row">
             <div class="col-1"></div>
             <div class="col-10">
-                <?= filter_var($content) ?>
+                <?= filter_var($content); ?>
             </div>
             <div class="col-1"></div>
         </div>

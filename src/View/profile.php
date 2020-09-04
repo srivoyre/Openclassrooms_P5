@@ -1,10 +1,10 @@
-<?php $this->title = 'Mon profil'; ?>
-
+<?php $this->title = 'Profile'; ?>
+<?php $this->h1 = 'Profile'; ?>
 
 <div class="row">
     <div class="col-12">
-        <h1><?= filter_var($user->getPseudo()); ?></h1>
-        <p>Membre depuis le <?= filter_var($user->getCreatedAt()); ?></p>
+        <h2><?= filter_var($user->getPseudo()); ?></h2>
+        <p>Member since <?= filter_var($user->getCreatedAt()); ?></p>
 
         <div id="jokes-container" class="row">
             <script type="text/javascript">
@@ -37,7 +37,7 @@
                         </span>
                     </div>
                     <div class="col-12 col-md-4 pb-2">
-                        <input class="btn btn-primary" type="submit" value="Mettre à jour mon e-mail" id="submitEmail" name="submitEmail">
+                        <input class="btn btn-primary" type="submit" value="Update email" id="submitEmail" name="submitEmail">
                     </div>
                 </div>
 
@@ -46,10 +46,10 @@
 
         <div class="row mt-5">
             <div class="col-6 col-md-3 text-center text-md-left">
-                <a type="button" class="btn btn-outline-primary btn-block" href="index.php?route=updatePassword">Modifier mon mot de passe</a>
+                <a type="button" class="btn btn-outline-primary btn-block" href="index.php?route=updatePassword">Update my password</a>
             </div>
             <div class="col-6 col-md-3 text-center text-md-left">
-                <a type="button" class="btn btn-outline-danger btn-block" href="index.php?route=deleteAccount">Supprimer mon compte</a>
+                <a type="button" class="btn btn-outline-danger btn-block" href="index.php?route=deleteAccount">Delete my account</a>
             </div>
         </div>
     </div>

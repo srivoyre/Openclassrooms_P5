@@ -1,8 +1,4 @@
-<?php $this->title = "Accueil"; ?>
-<script type="text/javascript">
-    filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
-    savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
-</script>
+<?php $this->title = 'Home'; ?>
 
 <div class="row mt-4">
     <div class="col-md-1 col-lg-2"></div>
@@ -13,9 +9,6 @@
         <div class="row mb-5">
             <div class="col-1"></div>
             <div id="joke-container" class="col-10 text-center py-5">
-                <!--<script type="text/javascript">
-
-                </script>-->
             </div>
             <div class="col-1"></div>
         </div>
@@ -31,3 +24,8 @@
     </div>
     <div class="col-md-1 col-lg-2"></div>
 </div>
+
+<script type="text/javascript">
+    filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
+    savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
+</script>
