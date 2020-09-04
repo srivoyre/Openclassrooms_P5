@@ -79,6 +79,17 @@ class FlaggedJokeDAO extends DAO
         ]);
     }
 
+    public function filterJoke(string $jokeId)
+    {
+        $sql = 'UPDATE flaggedJoke 
+                SET filtered = :bool 
+                WHERE id = :jokeId';
+        $this->createQuery($sql, [
+            'bool' => 1,
+            'jokeId' => $jokeId
+        ]);
+    }
+
     public function deleteFlaggedJoke(int $flaggedJokeId)
     {
         $sql = 'DELETE 
