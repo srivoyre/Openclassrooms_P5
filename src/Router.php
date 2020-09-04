@@ -56,6 +56,9 @@ class Router
             case 'saveJoke' :
                 $this->backController->saveJoke($this->request->getGet());
                 break;
+            case 'removeJoke' :
+                $this->backController->removeSavedJoke($this->request->getGet());
+                break;
             case 'flagJoke' :
                 $this->frontController->flagJoke($this->request->getGet());
                 break;

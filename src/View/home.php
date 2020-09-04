@@ -14,10 +14,10 @@ var_dump($savedJokesArray);
                 <script type="text/javascript">
                     savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
                 </script>
-                <a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=" alt="Add joke to favourites">
+                <a type="button" id="saveJokeBtn" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId=" title="Add joke to favourites">
                     <i class="far fa-star"></i>
                 </a>
-                <a type="button" id="saveJokeBtn" class="btn" href="index.php?route=saveJoke&jokeApiId=" alt="Remove joke in favourites">
+                <a type="button" id="removeSavedJokeBtn" class="btn" href="index.php?route=removeJoke&jokeApiId=" data-toggle="tooltip" data-placement="top" title="Remove joke from favourites">
                     <i id="saved-icon" class="fas fa-star" style="color: #FFD700"></i>
                 </a>
 

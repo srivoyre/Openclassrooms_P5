@@ -53,6 +53,7 @@ const processUniqueResult = function (result) {
 
     setDynamicApiId('saveJokeBtn', joke.id);
     setDynamicApiId('flagJokeBtn', joke.id);
+    setDynamicApiId('removeSavedJokeBtn', joke.id);
     showElement(document.getElementById('joke-container'));
 }
 
@@ -78,7 +79,7 @@ const processMultipleResults = function (result) {
  * functions called by user interaction
  ****************************************/
 function randomJoke() {
-    new XHRRequest(processUniqueResult, '99');
+    new XHRRequest(processUniqueResult, '');
 }
 function specifiedJoke(jokeApiId) {
     new XHRRequest(processMultipleResults, jokeApiId.toString());
