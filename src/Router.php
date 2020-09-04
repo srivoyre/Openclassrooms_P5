@@ -36,6 +36,8 @@ class Router
         try {
             if (isset($route)) {
                 $this->route($route);
+            } elseif ($this->request->getSession()->get('user')) {
+                $this->backController->home();
             } else {
                 $this->frontController->home();
             }
@@ -53,6 +55,9 @@ class Router
         switch ($route) {
             case 'saveJoke' :
                 $this->backController->saveJoke($this->request->getGet());
+                break;
+            case 'removeJoke' :
+                $this->backController->removeSavedJoke($this->request->getGet());
                 break;
             case 'flagJoke' :
                 $this->frontController->flagJoke($this->request->getGet());

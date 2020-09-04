@@ -26,10 +26,32 @@ class SavedJokeDAO extends DAO
         return $savedJoke;
     }
 
+    public function getSavedJoke(string $jokeApiId, string $userId)
+    {
+        $sql = 'SELECT id, user_id, joke_api_id, createdAt 
+                FROM savedJoke 
+                WHERE user_id = ?
+                    AND joke_api_id = ?
+                ORDER BY createdAt DESC';
+
+        $result = $this->createQuery($sql, [
+            $userId,
+            $jokeApiId
+        ]);
+        $savedJoke = $result->fetch();
+        $result->closeCursor();
+
+        if($savedJoke) {
+            return $this->buildObject($savedJoke);
+        }
+
+        return $savedJoke;
+    }
+
     public function getSavedJokes(string $userId)
     {
         // We do not filter jokes saved by user. If the joke has been reported by another user,
-        // those who saved it can still see it appear in their profiles.
+        // users who saved it can still see it appear in their profiles.
 
         $sql = 'SELECT id, user_id, joke_api_id, createdAt 
                 FROM savedJoke 
@@ -37,15 +59,12 @@ class SavedJokeDAO extends DAO
                 ORDER BY createdAt DESC';
         $result = $this->createQuery($sql,[$userId]);
         $savedJokes = [];
-
-        foreach ($result as $row) {
-            $savedJokeId = $row['id'];
-            $savedJokes[$savedJokeId] = $this->buildObject($row);
+        foreach ($result->fetchAll() as $row) {
+            array_push($savedJokes, $this->buildObject($row));
         }
-
         $result->closeCursor();
-
         return $savedJokes;
+
     }
 
     public function addSavedJoke(string $jokeApiId, string $userId)
@@ -57,12 +76,16 @@ class SavedJokeDAO extends DAO
             $userId
         ]);
     }
-    public function deleteSavedJoke(string $savedJokeId)
+    public function deleteSavedJoke(string $savedJokeId, string $userId)
     {
         $sql = 'DELETE 
                 FROM savedJoke 
-                WHERE id = ?';
-        $this->createQuery($sql, [$savedJokeId]);
+                WHERE joke_api_id = ?
+                AND user_id = ?';
+        $this->createQuery($sql, [
+            $savedJokeId,
+            $userId
+        ]);
     }
 
     public function deleteUserSavedJokes(string $userId)

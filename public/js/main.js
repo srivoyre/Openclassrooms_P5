@@ -1,4 +1,9 @@
 /*************************************
+ * variables declaration
+ ************************************/
+let savedJokesArray;
+
+/*************************************
  * standard functions
  ************************************/
 function hideElement(element) {
@@ -8,15 +13,16 @@ function showElement(element) {
     element.classList.remove('d-none');
 }
 
+// Hides the joke container before a joke is returned on home page
 document.addEventListener('DOMContentLoaded',(event) =>{
-    let jokeN = document.getElementById('joke');
-    if(jokeN.innerHTML === '') {
+    if (document.getElementById('joke')
+        && document.getElementById('joke').innerHTML === '') {
         hideElement(document.getElementById('joke-container'));
-    } else {
-        console.log(jokeN.innerHTML);
     }
 })
-
+/****************************************
+ * App features
+ ****************************************/
 function setDynamicApiId(elementId, jokeId) {
     let url = new URL(document.getElementById(elementId).getAttribute('href'), 'http://localhost:8080/projects/OC_P5/public/');
     let search_params = url.searchParams;
@@ -25,52 +31,94 @@ function setDynamicApiId(elementId, jokeId) {
     let new_url = url.toString();
     document.getElementById(elementId).setAttribute('href', new_url);
 }
-const processUniqueResult = function (result) {
-    let joke = new Joke(JSON.parse(result));
-    // processing results
-    if (joke.type == "single") {
-        document.getElementById('joke').innerHTML = joke.joke;
-    } else {
-        document.getElementById('joke').innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
+
+function createJokeContainer(joke) {
+    const jokeContent = () => {
+        if (joke.type == "single") {
+            return joke.joke;
+         } else {
+            return joke.setup + '<br /> <br />' + joke.delivery;
+         }
     }
-    setDynamicApiId('saveJokeBtn', joke.id);
-    setDynamicApiId('flagJokeBtn', joke.id);
+    let containerTemplate = document.createElement('div');
+    containerTemplate.id = 'joke-container'+joke.id;
+    containerTemplate.classList.add('row', 'joke-container');
+    containerTemplate.innerHTML =
+        '<a type="button" id="saveJokeBtn'
+        + joke.id
+        + '" class="btn btn-outline-primary" href="index.php?route=saveJoke&jokeApiId='
+        + joke.id
+        + '" title="Add joke to favourites">\n'
+        + '<i class="far fa-star"></i>\n'
+        + '</a>\n'
+        + '<a type="button" id="removeSavedJokeBtn'
+        + joke.id
+        + '" class="btn" href="index.php?route=removeJoke&jokeApiId='
+        + joke.id
+        + '" data-toggle="tooltip" data-placement="top" title="Remove joke from favourites">\n'
+        +'<i id="saved-icon" class="fas fa-star text-warning"></i>\n'
+        +'</a>\n'
+        +'\n'
+        +'<a type="button" id="flagJokeBtn'
+        + joke.id
+        + '" class="btn btn-outline-danger" href="index.php?route=flagJoke&jokeApiId='
+        + joke.id
+        + '">\n'
+        +'<i class="far fa-flag"></i>\n'
+        +'</a>\n'
+        +'\n'
+        +'<a type="button" id="unflagJokeBtn'
+        + joke.id
+        +'" class="btn" href="index.php?route=flagJoke&jokeApiId='
+        + joke.id
+        + '">\n'
+        +'<i class="fas fa-flag text-danger"></i>\n'
+        +'</a>\n'
+        +'\n'
+        +'<span id="joke" class="align-middle joke">\n'
+        + jokeContent()
+        +'\n </span>';
+
+    return containerTemplate;
+}
+
+function manageActionButtons(jokeId) {
+    let saveBtn = document.getElementById('saveJokeBtn'+jokeId);
+    let unsaveBtn = document.getElementById('removeSavedJokeBtn'+jokeId);
+    let flagBtn = document.getElementById('flagJokeBtn'+jokeId);
+    let unflagBtn = document.getElementById('unflagJokeBtn'+jokeId);
+
+    if(savedJokesArray.indexOf(jokeId.toString()) !== -1) {
+        hideElement(saveBtn);
+        showElement(unsaveBtn);
+    } else {
+        hideElement(unsaveBtn);
+        showElement(saveBtn);
+    }
+}
+
+const processUniqueResult = function (result) {
+    let jokeContainer = document.getElementById('joke-container');
+    jokeContainer.innerHTML = '';
+
+    let joke = new Joke(JSON.parse(result));
+    jokeContainer.appendChild(createJokeContainer(joke));
+    manageActionButtons(joke.id);
     showElement(document.getElementById('joke-container'));
 }
+
 const processMultipleResults = function (result) {
     let joke = new Joke(JSON.parse(result));
     let jokesContainer = document.getElementById('jokes-container');
-    let newJokeContainer = document.createElement('div');
-    newJokeContainer.id = 'joke-container'+joke.id;
-    newJokeContainer.classList.add('row', 'joke-container');
-    let newJokeElement = document.createElement('span');
-    newJokeElement.id = 'joke'+joke.id;
-    newJokeElement.classList.add('joke', 'align-middle');
-    newJokeContainer.appendChild(newJokeElement);
-    jokesContainer.appendChild(newJokeContainer);
-
-    if (joke.type == "single") {
-        document.getElementById('joke'+joke.id).innerHTML = joke.joke;
-    } else {
-        document.getElementById('joke'+joke.id).innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
-    }
+    jokesContainer.appendChild(createJokeContainer(joke));
+    manageActionButtons(joke.id)
 }
-
+/****************************************
+ * functions called by user interaction
+ ****************************************/
 function randomJoke() {
-    let ajax = new XHRRequest(processUniqueResult, '1-100');
+    new XHRRequest(processUniqueResult, '');
 }
 function specifiedJoke(jokeApiId) {
-    let ajax = new XHRRequest(processMultipleResults, jokeApiId.toString());
+    new XHRRequest(processMultipleResults, jokeApiId.toString());
 }
-/*function specifiedJokesArray(array) {
-    // Calls all jokes whose id is in the array
-    // returns array of jokes
-    for(let i = 0; i<array.length ; i++) {
-        let joke = new Joke(i);
-        console.log(joke);
-    }*/
-    /*array.foreach(item => {
-        let joke = new Joke(item);
-        console.log(joke);
-    });*/
-//}
