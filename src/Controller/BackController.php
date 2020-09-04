@@ -53,6 +53,20 @@ class BackController extends Controller
             ]);
         }
     }
+
+    public function administration()
+    {
+        if ($this->checkAdmin()) {
+            $flaggedJokes = $this->flaggedJokeDAO->getFlaggedJokes(false);
+            $users = $this->userDAO->getUsers();
+
+            return $this->view->render('administration', [
+                'flaggedJokes' => $flaggedJokes,
+                'users' => $users
+            ]);
+        }
+    }
+
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
