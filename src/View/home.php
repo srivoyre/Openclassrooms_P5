@@ -27,5 +27,12 @@
 
 <script type="text/javascript">
     filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
-    savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
+    savedJokesArray =
+    <?php
+    if ($this->session->get('loggedIn')) {
+        echo json_encode($savedJokesArray);
+    } else {
+        echo '[]';
+    }
+    ?>;
 </script>
