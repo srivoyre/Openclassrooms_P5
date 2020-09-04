@@ -104,25 +104,6 @@ const processUniqueResult = function (result) {
     let joke = new Joke(JSON.parse(result));
     jokeContainer.appendChild(createJokeContainer(joke));
     manageActionButtons(joke.id);
-    // processing results
-    /*if (joke.type == "single") {
-        document.getElementById('joke').innerHTML = joke.joke;
-    } else {
-        document.getElementById('joke').innerHTML = joke.setup + '<br /> <br />' + joke.delivery;
-    }
-    console.log(savedJokesArray);
-    console.log(savedJokesArray.indexOf(joke.id.toString()));
-    if(savedJokesArray.indexOf(joke.id.toString()) !== -1) {
-        hideElement(document.getElementById('saveJokeBtn'));
-        showElement(document.getElementById('saved-icon'));
-    } else {
-        hideElement(document.getElementById('saved-icon'));
-        showElement(document.getElementById('saveJokeBtn'));
-    }*/
-    /*
-    setDynamicApiId('saveJokeBtn', joke.id);
-    setDynamicApiId('flagJokeBtn', joke.id);
-    setDynamicApiId('removeSavedJokeBtn', joke.id);*/
     showElement(document.getElementById('joke-container'));
 }
 
