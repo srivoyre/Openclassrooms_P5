@@ -62,6 +62,21 @@ class JokesController extends BackController
         }
     }
 
+    public function flagJoke(Parameter $get)
+    {
+        $jokeApiId = (int)$get->get('jokeApiId');
+        if($this->flaggedJokeDAO->isFlaggedJoke($jokeApiId)) {
+            $this->flaggedJokeDAO->flagExistingJoke($jokeApiId);
+        } else {
+            $this->flaggedJokeDAO->addFlaggedJoke($jokeApiId);
+        }
+        $this->session->set(
+            'success_message',
+            'This joke has been reported!'
+        );
+        header('Location: index.php');
+    }
+
     public function unflagJoke(Parameter $get)
     {
         if ($this->checkAdmin()) {
@@ -84,5 +99,15 @@ class JokesController extends BackController
             );
             header('Location: index.php?route=administration');
         }
+    }
+
+    public function getFilteredJokesApiIdArray()
+    {
+        $filteredJokes = $this->flaggedJokeDAO->getFlaggedJokes(true);
+        $filteredJokesApiIdArray = [];
+        foreach ($filteredJokes as $joke) {
+            array_push($filteredJokesApiIdArray, $joke->getJokeApiId());
+        }
+        return $filteredJokesApiIdArray;
     }
 }
