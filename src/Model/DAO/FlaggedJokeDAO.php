@@ -29,7 +29,7 @@ class FlaggedJokeDAO extends DAO
 
     public function getFlaggedJokes($filtered = false)
     {
-        $sql = 'SELECT id, joke_api_id, flag_count, createdAt 
+        $sql = 'SELECT id, joke_api_id, flag_count, filtered, createdAt 
                 FROM flaggedJoke 
                 WHERE filtered = ?
                 ORDER BY flag_count DESC, createdAt DESC';
