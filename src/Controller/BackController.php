@@ -93,6 +93,7 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $user = $this->userDAO->getUser($this->session->get('user')->getPseudo());
             $savedJokes = $this->savedJokeDAO->getSavedJokes($this->session->get('user')->getId());
+            var_dump($savedJokes);
             return $this->view->render('profile', [
                 'user' => $user,
                 'savedJokes' => $savedJokes
