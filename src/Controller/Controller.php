@@ -7,7 +7,6 @@ use App\src\Model\DAO\SavedJokeDAO;
 use App\src\Model\DAO\UserDAO;
 use App\src\Controller\View;
 use App\src\Constraint\Validation;
-use App\src\Model\FlaggedJoke;
 use App\src\Request;
 
 /**
@@ -34,7 +33,6 @@ abstract class Controller
         $this->userDAO = new UserDAO();
         $this->savedJokeDAO = new SavedJokeDAO();
         $this->flaggedJokeDAO = new FlaggedJokeDAO();
-        $this->userDAO = new UserDAO();
         $this->view = new View();
         $this->validation = new Validation();
         $this->request = new Request();
