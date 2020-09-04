@@ -3,6 +3,7 @@
  ************************************/
 let savedJokesArray;
 let showJokesInAdminSpace;
+let filteredJokesArray;
 /*************************************
  * standard functions
  ************************************/
@@ -114,13 +115,17 @@ function manageActionButtons(jokeId) {
 }
 
 const processUniqueResult = function (result) {
-    let jokeContainer = document.getElementById('joke-container');
-    jokeContainer.innerHTML = '';
-
     let joke = new Joke(JSON.parse(result));
-    jokeContainer.appendChild(createJokeContainer(joke));
-    manageActionButtons(joke.id);
-    showElement(document.getElementById('joke-container'));
+
+    if(filteredJokesArray.indexOf(joke.id.toString()) !== -1) {
+        randomJoke();
+    } else {
+        let jokeContainer = document.getElementById('joke-container');
+        jokeContainer.innerHTML = '';
+        jokeContainer.appendChild(createJokeContainer(joke));
+        manageActionButtons(joke.id);
+        showElement(document.getElementById('joke-container'));
+    }
 }
 
 const processMultipleResults = function (result) {
