@@ -1,10 +1,6 @@
 <?php $this->title = 'Administration'; ?>
 <?php $this->h1 = 'Administration'; ?>
 
-<script type="text/javascript">
-    showJokesInAdminSpace = true;
-</script>
-
 <section>
 
     <h2>Reported jokes</h2>
@@ -150,3 +146,7 @@
     </table>
 
 </section>
+
+<script type="text/javascript">
+    showJokesInAdminSpace = true;
+</script>

@@ -1,6 +1,4 @@
-<?php $this->title = "Erreur 500: erreur interne du serveur"; ?>
-
-<a type="button" class="btn btn-light mb-5" href="index.php"><< Back to homepage</a>
+<?php $this->title = '500 Error: Internal Server Error'; ?>
 
 <div id="notfound">
     <div class="notfound">

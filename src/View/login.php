@@ -1,10 +1,10 @@
-<?php $this->title = "Connexion" ;?>
+<?php $this->title = 'Login' ;?>
 <div class="row mt-5">
     <div class="col-sm-2 col-lg-3 col-xl-4"></div>
     <div class="col-12 col-sm-8 col-lg-6 col-xl-4">
 
         <h1>
-            Connexion
+            Login
         </h1>
 
         <div class="row">
@@ -12,26 +12,26 @@
 
                 <form method="post" action="index.php?route=login">
                     <div class="form-group">
-                        <label for="pseudo">Pseudo ou e-mail</label>
+                        <label for="pseudo">Username or email</label>
                         <br />
-                        <input class="form-control" type="text" id="pseudo" name="pseudo" required aria-required="true">
+                        <input class="form-control" type="text" id="pseudo" name="pseudo" aria-label="Username/Email" aria-required="true" required>
                     </div>
                     <div class="form-group">
-                        <label for="password">Mot de passe</label>
+                        <label for="password">Password</label>
                         <br />
-                        <input class="form-control" type="password" id="password" name="password" required aria-required="true">
+                        <input class="form-control" type="password" id="password" name="password" aria-label="Password" aria-required="true" required>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Connexion" id="submit" name="submit">
+                    <input class="btn btn-primary" type="submit" value="Login" id="submit" name="submit">
                 </form>
                 <div class="row mt-5">
                     <div class="col-6 text-center">
                         <a type="button" class="btn btn-primary btn-block" href="index.php?route=register">
-                            Je crée un compte
+                            Register
                         </a>
                     </div>
                     <div class="col-6 text-center">
                         <a type="button" class="btn btn-info btn-block" href="index.php">
-                            Retour à l'accueil
+                            Go to Homepage
                         </a>
                     </div>
                 </div>

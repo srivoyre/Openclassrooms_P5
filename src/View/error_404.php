@@ -1,4 +1,4 @@
-<?php $this->title = "Erreur 404 : Page non trouvée"; ?>
+<?php $this->title = "404 Error: Page not found"; ?>
 
 <div id="notfound">
     <div class="notfound">
