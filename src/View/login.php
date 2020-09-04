@@ -14,12 +14,23 @@
                     <div class="form-group">
                         <label for="pseudo">Username or email</label>
                         <br />
-                        <input class="form-control" type="text" id="pseudo" name="pseudo" aria-label="Username/Email" aria-required="true" required>
+                        <input class="form-control"
+                               type="text" id="pseudo"
+                               name="pseudo"
+                               aria-label="Username/Email"
+                               aria-required="true"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
                         <br />
-                        <input class="form-control" type="password" id="password" name="password" aria-label="Password" aria-required="true" required>
+                        <input class="form-control"
+                               type="password"
+                               id="password"
+                               name="password"
+                               aria-label="Password"
+                               aria-required="true"
+                               required>
                     </div>
                     <input class="btn btn-primary" type="submit" value="Login" id="submit" name="submit">
                 </form>

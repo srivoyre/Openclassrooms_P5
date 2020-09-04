@@ -13,7 +13,14 @@
             <div class="form-group">
                 <label for="pseudo">Username *</label>
                 <br />
-                <input class="form-control" type="text" id="pseudo" name="pseudo" aria-label="Username" required aria-required="true">
+                <input class="form-control"
+                       type="text"
+                       id="pseudo"
+                       name="pseudo"
+                       value="<?= isset($post) ? filter_var($post->get('pseudo'),FILTER_SANITIZE_STRING) : ''; ?>"
+                       aria-label="Username"
+                       aria-required="true"
+                       required />
                 <br />
                 <span class="alert-danger">
                     <?= isset($errors['pseudo']) ? filter_var($errors['pseudo'], FILTER_SANITIZE_STRING) : ''; ?>
@@ -22,16 +29,24 @@
             <div class="form-group">
                 <label for="email">Email *</label>
                 <br />
-                <input class="form-control" type="email" id="email" name="email" aria-label="Email" aria-describedby="basic-addon1" required aria-required="true">
+                <input class="form-control"
+                       type="email"
+                       id="email"
+                       name="email"
+                       value="<?= isset($post) ? filter_var((string)$post->get('email'), FILTER_SANITIZE_EMAIL) : '' ; ?>"
+                       aria-label="Email"
+                       aria-describedby="basic-addon1"
+                       aria-required="true"
+                       required />
                 <br />
                 <span class="alert-danger">
-                    <?= isset($errors['email']) ? filter_var($errors['email'], FILTER_SANITIZE_STRING) : ''; ?>
+                    <?= isset($errors['email']) ? filter_var($errors['email']) : ''; ?>
                 </span>
             </div>
             <div class="form-group">
                 <label for="password">Password *</label><span class="small font-italic">(at least 6 characters)</span>
                 <br />
-                <input class="form-control" type="password" id="password" name="password" aria-label="Password" required aria-required="true">
+                <input class="form-control" type="password" id="password" name="password" aria-label="Password" aria-required="true">
                 <br />
                 <span class="alert-danger">
                     <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_STRING) : ''; ?>

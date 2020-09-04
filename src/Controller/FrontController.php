@@ -69,6 +69,7 @@ class FrontController extends Controller
                     'success_message',
                     'Welcome '.$this->session->get('user')->getPseudo().'!'
                 );
+                header('Location: index.php');
             } else {
                 $this->session->set(
                     'info_message',
@@ -76,6 +77,7 @@ class FrontController extends Controller
                 );
             }
             return $this->view->render('home');
+
         } else {
             $this->session->set(
                 'error_message',
