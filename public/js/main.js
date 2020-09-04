@@ -105,7 +105,9 @@ function manageActionButtons(jokeId) {
     let flagBtn = document.getElementById('flagJokeBtn'+jokeId);
     let unflagBtn = document.getElementById('unflagJokeBtn'+jokeId);
 
-    if(savedJokesArray.indexOf(jokeId.toString()) !== -1) {
+    if( savedJokesArray !== null
+        && savedJokesArray.indexOf(jokeId.toString()) !== -1
+    ) {
         hideElement(saveBtn);
         showElement(unsaveBtn);
     } else {
@@ -117,7 +119,8 @@ function manageActionButtons(jokeId) {
 const processUniqueResult = function (result) {
     let joke = new Joke(JSON.parse(result));
 
-    if(filteredJokesArray.indexOf(joke.id.toString()) !== -1) {
+    if( filteredJokesArray !== null
+        && filteredJokesArray.indexOf(joke.id.toString()) !== -1) {
         randomJoke();
     } else {
         let jokeContainer = document.getElementById('joke-container');

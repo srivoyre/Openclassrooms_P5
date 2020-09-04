@@ -69,13 +69,13 @@ class FrontController extends Controller
                     'success_message',
                     'Welcome '.$this->session->get('user')->getPseudo().'!'
                 );
-                header('Location: index.php');
             } else {
                 $this->session->set(
                     'info_message',
                     'Nice to see you again '.$this->session->get('user')->getPseudo(). ' !'
                 );
             }
+            header('Location: index.php');
             return $this->view->render('home');
 
         } else {
