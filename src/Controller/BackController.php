@@ -49,8 +49,10 @@ class BackController extends Controller
         if ($this->checkLoggedIn()) {
             $jokesController = new JokesController();
             $savedJokesArray = $jokesController->getUserSavedJokesApiIdArray();
+            $filteredJokes = $jokesController->getFilteredJokesApiIdArray();
             return $this->view->render('home', [
-                'savedJokesArray' => $savedJokesArray
+                'savedJokesArray' => $savedJokesArray,
+                'filteredJokes' => $filteredJokes
             ]);
         }
     }
@@ -67,7 +69,7 @@ class BackController extends Controller
             ]);
         }
     }
-    
+
     /**
      * @return View
      */

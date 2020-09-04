@@ -2,6 +2,7 @@
 
 namespace App\src\Controller;
 
+use App\src\Controller\JokesController;
 use App\src\Parameter;
 
 /**
@@ -15,10 +16,14 @@ class FrontController extends Controller
      */
     public function home()
     {
-        return $this->view->render('home');
+        $jokesController = new JokesController();
+        $filteredJokes = $jokesController->getFilteredJokesApiIdArray();
+        return $this->view->render('home', [
+            'filteredJokes' => $filteredJokes
+        ]);
     }
 
-    public function flagJoke(Parameter $get)
+    /*public function flagJoke(Parameter $get)
     {
         $jokeApiId = (int)$get->get('jokeApiId');
         if($this->flaggedJokeDAO->isFlaggedJoke($jokeApiId)) {
@@ -31,7 +36,7 @@ class FrontController extends Controller
             'This joke has been reported!'
         );
         header('Location: index.php');
-    }
+    }*/
 
     /**
      * @param Parameter $post
