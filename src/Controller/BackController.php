@@ -47,11 +47,7 @@ class BackController extends Controller
     public function home()
     {
         if ($this->checkLoggedIn()) {
-            $savedJokes = $this->savedJokeDAO->getSavedJokes($this->session->get('user')->getId());
-            $savedJokesArray = [];
-            foreach($savedJokes as $savedJoke) {
-                array_push($savedJokesArray, $savedJoke->getJokeApiId());
-            }
+            $savedJokesArray = $this->getUserSavedJokesApiIdArray();
             return $this->view->render('home', [
                 'savedJokesArray' => $savedJokesArray
             ]);
@@ -93,10 +89,21 @@ class BackController extends Controller
                 'success_message',
                 'The joke has successfully been removed from your favourites!'
             );
-            header('Location: index.php');
+            header('Location: index.php?route=profile');
         }
     }
 
+    public function getUserSavedJokesApiIdArray()
+    {
+        if ($this->checkLoggedIn()) {
+            $savedJokes = $this->savedJokeDAO->getSavedJokes($this->session->get('user')->getId());
+            $savedJokesArray = [];
+            foreach ($savedJokes as $savedJoke) {
+                array_push($savedJokesArray, $savedJoke->getJokeApiId());
+            }
+            return $savedJokesArray;
+        }
+    }
     /**
      * @return View
      */
@@ -104,11 +111,10 @@ class BackController extends Controller
     {
         if ($this->checkLoggedIn()) {
             $user = $this->userDAO->getUser($this->session->get('user')->getPseudo());
-            $savedJokes = $this->savedJokeDAO->getSavedJokes($this->session->get('user')->getId());
-            var_dump($savedJokes);
+            $savedJokesArray = $this->getUserSavedJokesApiIdArray();
             return $this->view->render('profile', [
                 'user' => $user,
-                'savedJokes' => $savedJokes
+                'savedJokesArray' => $savedJokesArray
             ]);
         }
     }
