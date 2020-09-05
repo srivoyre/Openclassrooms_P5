@@ -13,9 +13,31 @@
             <?php
             foreach ($savedJokesArray as $savedJoke) {
             ?>
-            <script type="text/javascript">
-                specifiedJoke(<?= $savedJoke; ?>);
-            </script>
+                <div id="joke-container<?= $savedJoke; ?>" class="col-10 text-center py-5 overflow-auto position-relative">
+                    <script type="text/javascript">
+                        getSpecificJoke(<?= $savedJoke; ?>);
+                    </script>
+                    <div id="actions-container<?=$savedJoke;?>" class="actions-container position-absolute">
+                        <a type="button"
+                           id="saveJokeBtn<?= $savedJoke; ?>"
+                           class="btn btn-outline-primary"
+                           href="index.php?route=saveJoke&jokeApiId=<?= $savedJoke; ?>"
+                           title="Add joke to favourites">
+                            <i class="far fa-star"></i>
+                        </a>
+                        <a type="button"
+                           id="removeSavedJokeBtn<?= $savedJoke; ?>"
+                           class="btn"
+                           href="index.php?route=removeJoke&jokeApiId=<?= $savedJoke; ?>"
+                           data-toggle="tooltip"
+                           data-placement="top"
+                           title="Remove joke from favourites">
+                            <i id="saved-icon" class="fas fa-star text-warning"></i>
+                        </a>
+                    </div>
+                    <span id="joke<?= $savedJoke; ?>" class="align-left joke"></span>
+                </div>
+
                 <?php
             }
             ?>
@@ -55,4 +77,3 @@
     </div>
 
 </div>
-

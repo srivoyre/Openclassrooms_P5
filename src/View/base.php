@@ -42,7 +42,7 @@
         <script src="https://kit.fontawesome.com/65eb1404cc.js" crossorigin="anonymous"></script>
         <script src="../public/js/main.js"></script>
         <script src="../public/js/Joke.js"></script>
-        <script src="../public/js/XHRRequest.js"></script>
+        <script src="../public/js/JokeApiXHR.js"></script>
         <script <?= filter_var($script, FILTER_SANITIZE_URL) ?> ></script>
 
     </head>
@@ -98,7 +98,7 @@
         <div class="row mt-3">
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
             <div class="col-10 col-sm-8 col-md-6 col-lg-4">
-                <div class="message">
+                <div id="message" class="fadeOut">
                     <?php
                     if ($this->session->get('info_message')) {
                         ?>

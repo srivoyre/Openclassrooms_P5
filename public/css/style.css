@@ -1,6 +1,10 @@
 body {
   /*font-family: 'Montserrat', sans-serif;*/
 }
+.actions-container {
+  top: 0;
+  right: 0;
+}
 .joke-container {
   border: 2px double gray;
   min-height: 200px;
@@ -8,4 +12,30 @@ body {
 }
 .joke {
   display: table-cell;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  -webkit-animation-duration: 1700ms;
+  animation-duration: 1700ms;
+  -webkit-animation-delay: 2000ms;
+  animation-delay: 2000ms;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
