@@ -1,5 +1,7 @@
-<?php $this->title = 'Administration'; ?>
-<?php $this->h1 = 'Administration'; ?>
+<?php
+$this->title = 'Administration';
+$this->h1 = 'Administration';
+?>
 
 <section>
 
@@ -31,8 +33,9 @@
             <tr id="jokes-container<?= $flaggedJoke->getJokeApiId(); ?>" class="d-flex flex-wrap justify-content-lg-between">
                 <td id="joke-container<?= $flaggedJoke->getJokeApiId(); ?>" class="col-12 col-lg-10">
                     <script type="text/javascript">
-                        specifiedJoke(<?= $flaggedJoke->getJokeApiId(); ?>);
+                        getSpecificJoke(<?= $flaggedJoke->getJokeApiId(); ?>);
                     </script>
+                    <span id="joke<?= $flaggedJoke->getJokeApiId(); ?>" class="align-left joke"></span>
                 </td>
                 <td id="actionsBtn<?= $flaggedJoke->getJokeApiId(); ?>" class="col-12 col-lg-2 text-lg-right">
                     <a type="button" class="btn btn-outline-primary mb-1 mx-1" href="index.php?route=unflagJoke&jokeId=<?= filter_var($flaggedJoke->getId(), FILTER_SANITIZE_NUMBER_INT); ?>">
@@ -146,7 +149,3 @@
     </table>
 
 </section>
-
-<script type="text/javascript">
-    showJokesInAdminSpace = true;
-</script>
