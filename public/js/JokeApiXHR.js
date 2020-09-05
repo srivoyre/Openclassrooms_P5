@@ -1,11 +1,11 @@
-class XHRRequest {
+class JokeApiXHR {
 
-    constructor(callback, p_idRange = '') {
+    constructor(callback, idRange = '') {
         this.baseURL = 'https://sv443.net/jokeapi/v2';
         this.categories = ['Programming', 'Miscellaneous', 'Pun'];
         this.params = [
             'blacklistFlags=nsfw,religious,racist',
-            'idRange=' + p_idRange
+            'idRange=' + idRange
         ];
         this.xhr = new XMLHttpRequest();
         this.xhr.open("GET", this.baseURL + "/joke/" + this.categories.join(",") + "?" + this.params.join("&"));
