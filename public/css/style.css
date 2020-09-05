@@ -1,6 +1,13 @@
 body {
   /*font-family: 'Montserrat', sans-serif;*/
 }
+#jokes-container {
+ /* border: 1px solid black;*/
+}
+
+#jokes-container * {
+  /*border: 1px solid black;*/
+}
 .actions-container {
   top: 0;
   right: 0;
@@ -13,7 +20,10 @@ body {
 .joke {
   display: table-cell;
 }
-
+#message {
+  top: 50px;
+  max-width:400px;
+}
 @-webkit-keyframes fadeOut {
   0% {opacity: 1;}
   100% {opacity: 0;}
