@@ -3,7 +3,7 @@
  ************************************/
 let savedJokesArray;
 let filteredJokesArray;
-
+let interval;
 /*************************************
  * standard functions
  ************************************/
@@ -16,7 +16,7 @@ function showElement(element) {
 }
 // Hides the joke container before a joke is returned on home page
 document.addEventListener('DOMContentLoaded',() => {
-    if (document.getElementById('joke-container')
+   if (document.getElementById('joke-container')
         && document.getElementById('joke-container').innerHTML === '') {
         hideElement(document.getElementById('joke-container'));
     }
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded',() => {
     if (newRandomJokeBtn !== null) {
         newRandomJokeBtn.addEventListener('click', getRandomJoke, false);
     }
-})
+});
 
 /****************************************
 * App logic
