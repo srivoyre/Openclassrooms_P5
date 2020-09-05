@@ -35,7 +35,10 @@ $this->h1 = 'Administration';
                     <script type="text/javascript">
                         getSpecificJoke(<?= $flaggedJoke->getJokeApiId(); ?>);
                     </script>
-                    <span id="joke<?= $flaggedJoke->getJokeApiId(); ?>" class="align-left joke"></span>
+                    <span id="joke<?= $flaggedJoke->getJokeApiId(); ?>" class="align-left joke text-wrap"></span>
+                    <small class="font-weight-bold font-italic smaller">
+                        Reported <?= $flaggedJoke->getFlagCount(); ?> time(s)
+                    </small>
                 </td>
                 <td id="actionsBtn<?= $flaggedJoke->getJokeApiId(); ?>" class="col-12 col-lg-2 text-lg-right">
                     <a type="button" class="btn btn-outline-primary mb-1 mx-1" href="index.php?route=unflagJoke&jokeId=<?= filter_var($flaggedJoke->getId(), FILTER_SANITIZE_NUMBER_INT); ?>">
@@ -65,10 +68,10 @@ $this->h1 = 'Administration';
     <table class="table table-hover">
         <thead class="d-none d-lg-block">
             <tr class="d-flex">
-                <th class="col-lg-2" scope="col">Pseudo</th>
+                <th class="col-lg-2" scope="col">Username</th>
                 <th class="col-lg-3" scope="col">Email</th>
-                <th class="col-lg-2" scope="col">Date de création</th>
-                <th class="col-lg-3" scope="col">Rôle</th>
+                <th class="col-lg-2" scope="col">Created Date</th>
+                <th class="col-lg-3" scope="col">Role</th>
                 <th class="col-lg-2 text-right" scope="col">Actions</th>
             </tr>
         </thead>
