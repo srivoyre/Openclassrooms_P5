@@ -33,7 +33,7 @@
                         <i class="far fa-flag"></i>
                     </a>
                 </div>
-                <span id="joke" class="align-left joke"></span>
+                <span id="joke" class="align-left joke text-wrap"></span>
             </div>
             <div class="col-1"></div>
         </div>

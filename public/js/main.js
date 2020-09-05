@@ -8,22 +8,39 @@ let interval;
  * standard functions
  ************************************/
 function hideElement(element) {
-    element.classList.add('d-none');
+    if (!element.classList.contains('d-none')) {
+        element.classList.add('d-none');
+    }
 }
 function showElement(element) {
-    element.classList.remove('d-none');
+    if (element.classList.contains('d-none')) {
+        element.classList.remove('d-none');
+    }
 
 }
 // Hides the joke container before a joke is returned on home page
 document.addEventListener('DOMContentLoaded',() => {
-   if (document.getElementById('joke-container')
+   // Home page
+    if (document.getElementById('joke-container')
         && document.getElementById('joke-container').innerHTML === '') {
         hideElement(document.getElementById('joke-container'));
     }
-    let newRandomJokeBtn = document.getElementById('newRandomJoke');
+   let newRandomJokeBtn = document.getElementById('newRandomJoke');
     if (newRandomJokeBtn !== null) {
         newRandomJokeBtn.addEventListener('click', getRandomJoke, false);
     }
+
+    // Profile page
+    let jokesContainer = document.getElementById('jokes-container');
+    let userInfo = document.getElementById('user-info');
+    document.getElementById('showJokes').addEventListener('click', () => {
+        showElement(jokesContainer);
+        hideElement(userInfo);
+    }, false);
+    document.getElementById('showUserInfo').addEventListener('click', () => {
+        showElement(userInfo);
+        hideElement(jokesContainer);
+    }, false);
 });
 
 /****************************************
