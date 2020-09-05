@@ -42,7 +42,7 @@
         <script src="https://kit.fontawesome.com/65eb1404cc.js" crossorigin="anonymous"></script>
         <script src="../public/js/main.js"></script>
         <script src="../public/js/Joke.js"></script>
-        <script src="../public/js/XHRRequest.js"></script>
+        <script src="../public/js/JokeApiXHR.js"></script>
         <script <?= filter_var($script, FILTER_SANITIZE_URL) ?> ></script>
 
     </head>

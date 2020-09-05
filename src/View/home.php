@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col-3 col-sm-4 col-lg-5"></div>
             <div class="col-6 col-sm-4 col-lg-2 text-center">
-                <button id="newJoke" class="btn btn-primary btn-block" type="button" name="newJoke" onclick="getRandomJoke();">
+                <button id="newRandomJoke" class="btn btn-primary btn-block" type="button" name="newRandomJoke"">
                     New joke
                 </button>
             </div>
