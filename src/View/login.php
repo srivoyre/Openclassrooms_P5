@@ -1,7 +1,7 @@
 <?php $this->title = 'Login' ;?>
 <div class="row mt-5">
-    <div class="col-sm-2 col-lg-3 col-xl-4"></div>
-    <div class="col-12 col-sm-8 col-lg-6 col-xl-4">
+    <div class="col-sm-2 col-xl-3"></div>
+    <div class="col-12 col-sm-8 col-xl-6">
 
         <h1>
             Login
@@ -32,7 +32,7 @@
                                aria-required="true"
                                required>
                     </div>
-                    <input class="btn btn-primary" type="submit" value="Login" id="submit" name="submit">
+                    <input class="btn btn-primary btn-block" type="submit" value="Login" id="submit" name="submit">
                 </form>
                 <div class="row mt-5">
                     <div class="col-6 text-center">
@@ -55,6 +55,6 @@
 
     </div>
 
-    <div class="col-sm-2 col-lg-3 col-xl-4"></div>
+    <div class="col-sm-2 col-xl-3"></div>
 
 </div>

@@ -39,13 +39,13 @@
         </div>
 
         <div class="row">
-            <div class="col-3 col-sm-4 col-lg-5"></div>
-            <div class="col-6 col-sm-4 col-lg-2 text-center">
+            <div class="col-3 col-sm-4 col-lg-4"></div>
+            <div class="col-6 col-sm-4 col-lg-4 text-center">
                 <button id="newRandomJoke" class="btn btn-primary btn-block" type="button" name="newRandomJoke"">
                     New joke
                 </button>
             </div>
-            <div class="col-3 col-sm-4 col-lg-5"></div>
+            <div class="col-3 col-sm-4 col-lg-4"></div>
         </div>
     </div>
     <div class="col-md-1 col-lg-2"></div>

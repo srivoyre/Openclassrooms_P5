@@ -21,8 +21,8 @@ body {
   display: table-cell;
 }
 #message {
-  top: 50px;
-  max-width:400px;
+  top: -30px;
+  width:400px;
 }
 @-webkit-keyframes fadeOut {
   0% {opacity: 1;}

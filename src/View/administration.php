@@ -3,7 +3,7 @@ $this->title = 'Administration';
 $this->h1 = 'Administration';
 ?>
 
-<section>
+<section class="mt-5">
 
     <h2>Reported jokes</h2>
 
