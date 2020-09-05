@@ -12,11 +12,20 @@
         </div>
 
         <div class="row my-3">
-            <div id="jokes-container" class="col-12 col-sm-10 col-md-8 d-none">
+            <div id="jokes-container" class="col-12 col-sm-10 col-md-8">
                 <script type="text/javascript">
                     savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
                 </script>
                 <?php
+                if ($savedJokesArray == null) {
+                    ?>
+                    <div class="row border-bottom py-3 ml-2">
+                        <span class="font-weight-bold font-italic">
+                            No saved jokes yet!
+                        </span>
+                    </div>
+                    <?php
+                }
                 foreach ($savedJokesArray as $savedJoke) {
                     ?>
                     <div id="joke-container<?= $savedJoke; ?>" class="row border-bottom py-3">
