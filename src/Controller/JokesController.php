@@ -27,7 +27,7 @@ class JokesController extends BackController
                     'You already saved this joke!'
                 );
             }
-            header('Location: index.php');
+            header('Location: index.php', false);
         }
     }
 

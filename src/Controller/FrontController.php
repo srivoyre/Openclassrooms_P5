@@ -75,9 +75,7 @@ class FrontController extends Controller
                     'Nice to see you again '.$this->session->get('user')->getPseudo(). ' !'
                 );
             }
-            header('Location: index.php');
-            return $this->view->render('home');
-
+            header('Location: index.php?route=profile', false);
         } else {
             $this->session->set(
                 'error_message',
