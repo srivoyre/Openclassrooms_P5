@@ -12,7 +12,7 @@
         </div>
 
         <div class="row my-3">
-            <div id="jokes-container" class="col-12 col-sm-10 col-md-8">
+            <div id="jokes-container" class="col-12 col-sm-10 p-3">
                 <script type="text/javascript">
                     savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
                 </script>
@@ -39,9 +39,10 @@
                             <a type="button"
                                id="removeSavedJokeBtn<?= $savedJoke; ?>"
                                class="btn removeSavedJoke"
+                               title="Remove joke"
                                href="index.php?route=removeJoke&jokeApiId=<?= $savedJoke; ?>">
-                                <i id="saved-icon" class="fas fa-star p-2 text-warning"></i>
-                                <i id="remove-icon" class="fas fa-times p-2 text-danger d-none"></i>
+                                <i id="saved-icon<?= $savedJoke; ?>" class="fas fa-star p-2 text-warning action-icon"></i>
+                                <i id="remove-icon<?= $savedJoke; ?>" class="fas fa-times p-2 text-danger action-icon d-none"></i>
                             </a>
                         </div>
                     </div>
@@ -55,7 +56,7 @@
                 <div class="col-12">
                     <form method="post" action="index.php?route=updateEmail">
                         <div class="form-group row">
-                            <div class="col-12 col-md-10 col-lg-8">
+                            <div class="col-12 col-md-10 col-lg-8 p-0">
                                 <div class="row">
                                     <div class="col-12">
                                         <label for="email">E-mail :</label>
@@ -82,11 +83,11 @@
                         </div>
                     </form>
                     <div class="row mt-5">
-                        <div class="col-6 col-md-3 text-center text-md-left">
-                            <a type="button" class="btn btn-outline-primary btn-block" href="index.php?route=updatePassword">Update my password</a>
+                        <div class="col-6 col-md-3 text-center text-md-left p-1">
+                            <a type="button" class="btn btn-outline-primary btn-block" href="index.php?route=updatePassword">Update password</a>
                         </div>
-                        <div class="col-6 col-md-3 text-center text-md-left">
-                            <a type="button" class="btn btn-outline-danger btn-block" href="index.php?route=deleteAccount">Delete my account</a>
+                        <div class="col-6 col-md-3 text-center text-md-left p-1">
+                            <a type="button" class="btn btn-outline-danger btn-block" href="index.php?route=deleteAccount">Delete account</a>
                         </div>
                     </div>
                 </div>

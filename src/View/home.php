@@ -6,9 +6,9 @@
         <h1 class="text-center mb-5">
             Random joke generator
         </h1>
-        <div class="row mb-5">
+        <div class="row">
             <div class="col-1"></div>
-            <div id="joke-container" class="col-10 text-center py-5 overflow-auto position-relative">
+            <div id="joke-container" class="col-10 text-center py-5 px-0 overflow-auto position-relative">
                 <div id="actions-container" class="position-absolute">
                     <a type="button"
                        id="saveJokeBtn"

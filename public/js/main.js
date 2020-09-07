@@ -20,16 +20,6 @@ function showElement(element) {
 document.addEventListener('DOMContentLoaded',() => {
     setUpHomePage();
     setUpProfilePage();
-
-    document.getElementById('saved-icon').addEventListener('mouseover', () => {
-        hideElement(document.getElementById('saved-icon'));
-        showElement(document.getElementById('remove-icon'));
-    });
-
-    document.getElementById('remove-icon').addEventListener('mouseout', () => {
-        hideElement(document.getElementById('remove-icon'));
-        showElement(document.getElementById('saved-icon'));
-    });
 });
 
 function setUpHomePage() {
@@ -55,7 +45,15 @@ function setUpProfilePage() {
         showElement(userInfo);
         hideElement(jokesContainer);
     }, false);
+
+    let jokesSpan = document.getElementsByClassName('joke');
+    jokesSpan.forEach(function (item) {
+        if (item.innerHTML === '') {
+            item.innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!.</span>';
+        }
+    });
 }
+
 /****************************************
 * App logic
 ****************************************/
@@ -77,7 +75,7 @@ const processSpecificResult = function (result) {
     manageActionButtons(joke.id);
 }
 
-function manageActionButtons(btnId) {
+function manageActionButtons(btn1, btn2, btnId) {
     let saveBtn = document.getElementById('saveJokeBtn' + btnId);
     let unsaveBtn = document.getElementById('removeSavedJokeBtn'+ btnId);
     if( savedJokesArray !== null
@@ -95,7 +93,7 @@ function manageActionButtons(btnId) {
  * functions called by user interaction
  ****************************************/
 function getRandomJoke() {
-    new JokeApiXHR(processRandomResult, '');
+    new JokeApiXHR(processRandomResult, ''); //28
 }
 function getSpecificJoke(jokeApiId) {
     new JokeApiXHR(processSpecificResult, jokeApiId.toString());
