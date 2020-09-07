@@ -37,20 +37,11 @@
                         </div>
                         <div id="actions-container<?=$savedJoke;?>" class="col-2 actions-container text-left">
                             <a type="button"
-                               id="saveJokeBtn<?= $savedJoke; ?>"
-                               class="btn btn-outline-primary"
-                               href="index.php?route=saveJoke&jokeApiId=<?= $savedJoke; ?>"
-                               title="Add joke to favourites">
-                                <i class="far fa-star"></i>
-                            </a>
-                            <a type="button"
                                id="removeSavedJokeBtn<?= $savedJoke; ?>"
-                               class="btn"
-                               href="index.php?route=removeJoke&jokeApiId=<?= $savedJoke; ?>"
-                               data-toggle="tooltip"
-                               data-placement="top"
-                               title="Remove joke from favourites">
-                                <i id="saved-icon" class="fas fa-star text-warning"></i>
+                               class="btn removeSavedJoke"
+                               href="index.php?route=removeJoke&jokeApiId=<?= $savedJoke; ?>">
+                                <i id="saved-icon" class="fas fa-star p-2 text-warning"></i>
+                                <i id="remove-icon" class="fas fa-times p-2 text-danger d-none"></i>
                             </a>
                         </div>
                     </div>

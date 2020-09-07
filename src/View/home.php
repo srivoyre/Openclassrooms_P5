@@ -19,16 +19,14 @@
                     </a>
                     <a type="button"
                        id="removeSavedJokeBtn"
-                       class="btn"
-                       href="index.php?route=removeJoke&jokeApiId="
-                       data-toggle="tooltip"
-                       data-placement="top"
-                       title="Remove joke from favourites">
-                        <i id="saved-icon" class="fas fa-star text-warning"></i>
+                       class= removeSavedJoke"btn"
+                       href="index.php?route=removeJoke&jokeApiId=">
+                        <i id="saved-icon" class="fas fa-star p-2 text-warning"></i>
+                        <i id="remove-icon" class="fas fa-times p-2 text-danger d-none"></i>
                     </a>
                     <a type="button"
                        id="flagJokeBtn"
-                       class="btn btn-outline-danger"
+                       class="btn btn-outline-danger flagJoke"
                        href="index.php?route=flagJoke&jokeApiId=">
                         <i class="far fa-flag"></i>
                     </a>
