@@ -3,6 +3,8 @@
  ************************************/
 let savedJokesArray;
 let filteredJokesArray;
+let saveBtn;
+let unsaveBtn;
 /*************************************
  * standard functions
  ************************************/
@@ -16,7 +18,9 @@ function showElement(element) {
         element.classList.remove('d-none');
     }
 }
-
+/****************************************
+ * App functions
+ ****************************************/
 document.addEventListener('DOMContentLoaded',() => {
     setUpHomePage();
     setUpProfilePage();
@@ -53,48 +57,48 @@ function setUpProfilePage() {
         }
     });
 }
-
-/****************************************
-* App logic
-****************************************/
-const processRandomResult = function (result) {
-    let joke = new Joke(JSON.parse(result), true);
-    if (filteredJokesArray !== null
-        && filteredJokesArray.indexOf(joke.id.toString()) !== -1) {
+const processResult = function (result, random) {
+    let joke = new Joke(JSON.parse(result), random);
+    if (random === true
+        && filteredJokesArray !== null
+        && filteredJokesArray.indexOf(joke.id.toString()) !== -1
+    ) {
         getRandomJoke();
     } else {
         joke.createJokeContent();
-        manageActionButtons('');
     }
-    showElement(document.getElementById('joke-container'));
-}
-
-const processSpecificResult = function (result) {
-    let joke = new Joke(JSON.parse(result), false);
-    joke.createJokeContent();
-    manageActionButtons(joke.id);
-}
-
-function manageActionButtons(btn1, btn2, btnId) {
-    let saveBtn = document.getElementById('saveJokeBtn' + btnId);
-    let unsaveBtn = document.getElementById('removeSavedJokeBtn'+ btnId);
-    if( savedJokesArray !== null
-        && savedJokesArray.indexOf(btnId.toString()) !== -1
-    ) {
-        hideElement(saveBtn);
-        showElement(unsaveBtn);
+    if (random === true) {
+        manageActionButtons(
+            document.getElementById('saveJokeBtn'),
+            document.getElementById('removeSavedJokeBtn'),
+            joke.id);
+        showElement(document.getElementById('joke-container'));
     } else {
+        manageActionButtons(
+            document.getElementById('saveJokeBtn' + joke.id),
+            document.getElementById('removeSavedJokeBtn' + joke.id),
+            joke.id
+        );
+    }
+}
+
+function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
+    if( savedJokesArray !== null
+        && savedJokesArray.indexOf(jokeId.toString()) === -1
+    ) {
         hideElement(unsaveBtn);
         showElement(saveBtn);
+    } else {
+        hideElement(saveBtn);
+        showElement(unsaveBtn);
     }
 }
-
 /****************************************
- * functions called by user interaction
+ * function called by user interaction
  ****************************************/
 function getRandomJoke() {
-    new JokeApiXHR(processRandomResult, ''); //28
+    new JokeApiXHR(processResult, true, ''); //28
 }
 function getSpecificJoke(jokeApiId) {
-    new JokeApiXHR(processSpecificResult, jokeApiId.toString());
+    new JokeApiXHR(processResult, false, jokeApiId.toString());
 }

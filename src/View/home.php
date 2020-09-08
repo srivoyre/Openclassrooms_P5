@@ -19,7 +19,7 @@
                     </a>
                     <a type="button"
                        id="removeSavedJokeBtn"
-                       class= removeSavedJoke"btn"
+                       class="removeSavedJokeBtn"
                        href="index.php?route=removeJoke&jokeApiId=">
                         <i id="saved-icon" class="fas fa-star p-2 text-warning"></i>
                         <i id="remove-icon" class="fas fa-times p-2 text-danger d-none"></i>
