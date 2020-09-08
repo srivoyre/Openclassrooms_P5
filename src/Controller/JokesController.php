@@ -46,7 +46,7 @@ class JokesController extends BackController
                 'success_message',
                 'The joke has successfully been removed from your favourites!'
             );
-            header('Location: index.php?route=profile');
+            header('Location: index.php?');
         }
     }
 
