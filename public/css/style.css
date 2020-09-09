@@ -1,17 +1,31 @@
 body {
   /*font-family: 'Montserrat', sans-serif;*/
 }
-.actions-container {
+#actions-container {
   top: 0;
+  left: 0;
   right: 0;
 }
-.joke-container {
-  border: 2px double gray;
+#joke-container {
   min-height: 200px;
   display: table;
 }
 .joke {
-  display: table-cell;
+  display: inline-block;
+  width: 100%;
+}
+
+#message {
+  top: -65px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 3000;
+}
+@media all and (min-width: 768px){
+  #message {
+    top: -35px;
+  }
 }
 
 @-webkit-keyframes fadeOut {

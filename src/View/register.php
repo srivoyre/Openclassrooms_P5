@@ -1,9 +1,9 @@
 <?php $this->title = 'Registration'; ?>
 
 <div class="row mt-5">
-    <div class="col-sm-2 col-lg-3 col-xl-4"></div>
+    <div class="col-sm-2 col-xl-3"></div>
 
-    <div class="col-12 col-sm-8 col-lg-6 col-xl-4">
+    <div class="col-12 col-sm-8 col-xl-6">
 
         <h1>
             Registration
@@ -52,7 +52,7 @@
                     <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_STRING) : ''; ?>
                 </span>
             </div>
-            <input class="btn btn-primary" type="submit" value="Register" id="submit" name="submit">
+            <input class="btn btn-primary btn-block" type="submit" value="Register" id="submit" name="submit">
         </form>
 
         <div class="row mt-5">
@@ -70,6 +70,6 @@
 
     </div>
 
-    <div class="col-sm-2 col-lg-3 col-xl-4"></div>
+    <div class="col-sm-2 col-xl-3"></div>
 
 </div>

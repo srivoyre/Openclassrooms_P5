@@ -1,22 +1,14 @@
 <?php $this->title = 'Modifier mon mot de passe'; ?>
 <?php $this->h1 = 'Update my password'; ?>
 
-<div class="row my-2">
-    <div class="col-12 mx-0 px-0">
-        <a class="btn btn-light" href="index.php?route=profile">
-            << Retour au profil
-        </a>
-    </div>
-</div>
 <div class="row">
     <div class="col-12">
-        <h1>Modifier mon mot de passe</h1>
 
         <form method="post" action="index.php?route=updatePassword">
             <div class="form-group">
                 <div class="row">
                     <div class="col-12 col-md-8">
-                        <label for="password">Mot de passe actuel</label>
+                        <label for="password">Current password</label>
                     </div>
                 </div>
                 <div class="row">
@@ -28,7 +20,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-12">
-                        <label for="newPassword">Nouveau mot de passe</label>
+                        <label for="newPassword">New password</label>
                     </div>
                 </div>
                 <div class="row">
@@ -37,14 +29,22 @@
                         <span class="alert-danger">
                             <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_STRING) : ''; ?>
                         </span>
+                        <div class="row my-2">
+                            <div class="col-12">
+                                <input class="btn btn-primary btn-block"  type="submit" value="Update" id="submit" name="submit">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <input class="btn btn-primary"  type="submit" value="Mettre à jour" id="submit" name="submit">
-                </div>
-            </div>
         </form>
+    </div>
+</div>
+
+<div class="row my-2">
+    <div class="col-12 mx-0 px-0 my-3">
+        <a class="btn btn-light" href="index.php?route=profile">
+            << Back to profile
+        </a>
     </div>
 </div>

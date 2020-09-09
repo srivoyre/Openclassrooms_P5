@@ -85,20 +85,10 @@
             </nav>
         </header>
 
-        <div class="row mt-3">
-            <div class="col-1"></div>
-            <div class="col-10">
-                <h1>
-                    <?= filter_var($h1); ?>
-                </h1>
-            </div>
-            <div class="col-1"></div>
-        </div>
-
-        <div class="row mt-3">
+        <div class="row mt-3 position-relative">
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
             <div class="col-10 col-sm-8 col-md-6 col-lg-4">
-                <div id="message" class="fadeOut">
+                <div id="message" class="fadeOut position-absolute">
                     <?php
                     if ($this->session->get('info_message')) {
                         ?>
@@ -143,12 +133,22 @@
             <div class="col-1 col-sm-2 col-md-3 col-lg-4"></div>
         </div>
 
+        <div class="row mt-3">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8">
+                <h1>
+                    <?= filter_var($h1); ?>
+                </h1>
+            </div>
+            <div class="col-1 col-lg-2"></div>
+        </div>
+
         <div id="content" class="row">
-            <div class="col-1"></div>
-            <div class="col-10">
+            <div class="col-1 col-lg-2"></div>
+            <div class="col-10 col-lg-8">
                 <?= filter_var($content); ?>
             </div>
-            <div class="col-1"></div>
+            <div class="col-1 col-lg-2"></div>
         </div>
 
     </body>

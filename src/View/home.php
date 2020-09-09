@@ -6,9 +6,9 @@
         <h1 class="text-center mb-5">
             Random joke generator
         </h1>
-        <div class="row mb-5">
+        <div class="row">
             <div class="col-1"></div>
-            <div id="joke-container" class="col-10 text-center py-5 overflow-auto position-relative">
+            <div id="joke-container" class="col-10 text-center py-5 px-0 overflow-auto position-relative">
                 <div id="actions-container" class="position-absolute">
                     <a type="button"
                        id="saveJokeBtn"
@@ -19,33 +19,31 @@
                     </a>
                     <a type="button"
                        id="removeSavedJokeBtn"
-                       class="btn"
-                       href="index.php?route=removeJoke&jokeApiId="
-                       data-toggle="tooltip"
-                       data-placement="top"
-                       title="Remove joke from favourites">
-                        <i id="saved-icon" class="fas fa-star text-warning"></i>
+                       class="removeSavedJokeBtn"
+                       href="index.php?route=removeJoke&jokeApiId=">
+                        <i id="saved-icon" class="fas fa-star p-2 text-warning"></i>
+                        <i id="remove-icon" class="fas fa-times p-2 text-danger d-none"></i>
                     </a>
                     <a type="button"
                        id="flagJokeBtn"
-                       class="btn btn-outline-danger"
+                       class="btn btn-outline-danger flagJoke"
                        href="index.php?route=flagJoke&jokeApiId=">
                         <i class="far fa-flag"></i>
                     </a>
                 </div>
-                <span id="joke" class="align-left joke"></span>
+                <span id="joke" class="align-left joke text-wrap"></span>
             </div>
             <div class="col-1"></div>
         </div>
 
         <div class="row">
-            <div class="col-3 col-sm-4 col-lg-5"></div>
-            <div class="col-6 col-sm-4 col-lg-2 text-center">
+            <div class="col-3 col-sm-4 col-lg-4"></div>
+            <div class="col-6 col-sm-4 col-lg-4 text-center">
                 <button id="newRandomJoke" class="btn btn-primary btn-block" type="button" name="newRandomJoke"">
                     New joke
                 </button>
             </div>
-            <div class="col-3 col-sm-4 col-lg-5"></div>
+            <div class="col-3 col-sm-4 col-lg-4"></div>
         </div>
     </div>
     <div class="col-md-1 col-lg-2"></div>
