@@ -11,6 +11,7 @@ class Request
     private $get;
     private $post;
     private $session;
+    private $server;
 
     /**
      * Request constructor.
@@ -20,6 +21,7 @@ class Request
         $this->get = new Parameter(filter_input_array(INPUT_GET));
         $this->post = new Parameter(filter_input_array(INPUT_POST));
         $this->session = new Session($_SESSION);
+        $this->server = new Parameter(filter_input_array(INPUT_SERVER));
     }
 
     /**
@@ -45,4 +47,13 @@ class Request
     {
         return $this->session;
     }
+
+    /**
+     * @return Parameter
+     */
+    public function getServer()
+    {
+        return $this->server;
+    }
+
 }
