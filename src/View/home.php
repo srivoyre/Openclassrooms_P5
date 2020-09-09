@@ -31,7 +31,7 @@
                         <i class="far fa-flag"></i>
                     </a>
                 </div>
-                <span id="joke" class="align-left joke text-wrap"></span>
+                <span id="joke" class="align-left align-middle joke text-wrap"></span>
             </div>
             <div class="col-1"></div>
         </div>
@@ -59,8 +59,4 @@
         echo '[]';
     }
     ?>;
-    let specificJoke = <?php echo isset($specificJoke) ? $specificJoke : -1 ;?>;
-    if (specificJoke !== -1) {
-        getJoke(true, specificJoke);
-    }
 </script>

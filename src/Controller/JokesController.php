@@ -3,28 +3,20 @@
 namespace App\src\Controller;
 
 use App\src\Parameter;
+
 /**
  * Class JokesController
  * @package App\src\Controller
  */
 class JokesController extends BackController
 {
-    public function showJoke(Parameter $get)
-    {
-        return $this->view->render('home', [
-            'specificJoke' => $get->get('joke'),
-            'savedJokesArray' => $this->getUserSavedJokesApiIdArray(),
-            'filteredJokes' => $this->getFilteredJokesApiIdArray()
-        ]);
-    }
-   
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
             $jokeApiId = $get->get('jokeApiId');
             $userId = $this->session->get('user')->getId();
-            if(!$this->isExistingSavedJoke($jokeApiId, $userId)) {
-                $this->savedJokeDAO->addSavedJoke($jokeApiId, $userId);
+            if(!$this->isExistingSavedJoke((string)$jokeApiId, $userId)) {
+                $this->savedJokeDAO->addSavedJoke((string)$jokeApiId, $userId);
                 $this->session->set(
                     'success_message',
                     'This joke has been saved! You can find it in your profile page.'
@@ -35,7 +27,7 @@ class JokesController extends BackController
                     'You already saved this joke!'
                 );
             }
-            header('Location: index.php?route=show&joke='.$jokeApiId);
+            header('Location: index.php', false);
         }
     }
 
