@@ -56,6 +56,9 @@ class Router
     public function route($route)
     {
         switch ($route) {
+            case 'show' :
+                $this->jokesController->showJoke($this->request->getGet());
+                break;
             case 'saveJoke' :
                 $this->jokesController->saveJoke($this->request->getGet());
                 break;

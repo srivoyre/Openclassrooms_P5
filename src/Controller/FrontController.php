@@ -47,7 +47,7 @@ class FrontController extends Controller
     public function manageLogin(Parameter $post)
     {
         if($post->get('submit')) {
-            $this->login($post, false);
+            $this->login($post);
         } elseif ($this->session->get('loggedIn')) {
             return $this->view->render('home');
         } else {
@@ -58,23 +58,17 @@ class FrontController extends Controller
      * @param Parameter $post
      * @return View
      */
-    public function login(Parameter $post, $registering)
+    public function login(Parameter $post, $registering = false)
     {
         $checkPassword = $this->checkUserPassword($post);
         if ($checkPassword) {
             $this->session->set('loggedIn', true);
             $this->session->set('user', $checkPassword['user']);
-            if ($registering) {
-                $this->session->set(
-                    'success_message',
-                    'Welcome '.$this->session->get('user')->getPseudo().'!'
-                );
-            } else {
-                $this->session->set(
-                    'info_message',
-                    'Nice to see you again '.$this->session->get('user')->getPseudo(). ' !'
-                );
-            }
+            $msg = $registering ? 'Welcome '.$this->session->get('user')->getPseudo().'!' : 'Nice to see you again '.$this->session->get('user')->getPseudo(). ' !' ;
+            $this->session->set(
+                'info_message',
+                $msg
+            );
             header('Location: index.php?route=profile', false);
         } else {
             $this->session->set(

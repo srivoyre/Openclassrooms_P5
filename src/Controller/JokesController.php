@@ -9,7 +9,15 @@ use App\src\Parameter;
  */
 class JokesController extends BackController
 {
-
+    public function showJoke(Parameter $get)
+    {
+        return $this->view->render('home', [
+            'specificJoke' => $get->get('joke'),
+            'savedJokesArray' => $this->getUserSavedJokesApiIdArray(),
+            'filteredJokes' => $this->getFilteredJokesApiIdArray()
+        ]);
+    }
+   
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
@@ -27,7 +35,7 @@ class JokesController extends BackController
                     'You already saved this joke!'
                 );
             }
-            header('Location: index.php', false);
+            header('Location: index.php?route=show&joke='.$jokeApiId);
         }
     }
 
