@@ -46,7 +46,7 @@ class JokesController extends BackController
                 'success_message',
                 'The joke has successfully been removed from your favourites!'
             );
-            header('Location: index.php?');
+            header('Location: '.$this->server->get('HTTP_REFERER'), false);
         }
     }
 
@@ -74,7 +74,7 @@ class JokesController extends BackController
             'success_message',
             'This joke has been reported! It will be reviewed by our team shortly.'
         );
-        header('Location: index.php');
+        header('Location: index.php'.$this->server->get('HTTP_REFERER'), false);
     }
 
     public function unflagJoke(Parameter $get)
@@ -85,7 +85,7 @@ class JokesController extends BackController
                 'success_message',
                 'The joke has successfully been unflagged!'
             );
-            header('Location: index.php?route=administration');
+            header('Location: index.php?route=administration', false);
         }
     }
 
@@ -97,7 +97,7 @@ class JokesController extends BackController
                 'success_message',
                 'The joke has successfully been filtered! From now on, it will never be displayed to your visitors.'
             );
-            header('Location: index.php?route=administration');
+            header('Location: index.php?route=administration', false);
         }
     }
 

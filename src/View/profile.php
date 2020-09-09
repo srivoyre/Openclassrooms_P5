@@ -1,5 +1,7 @@
-<?php $this->title = 'Profile'; ?>
-<?php $this->h1 = 'Profile'; ?>
+<?php
+$this->title = 'Profile';
+$this->h1 = 'Profile';
+?>
 
 <div class="row">
     <div class="col-12">
