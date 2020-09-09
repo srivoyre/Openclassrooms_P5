@@ -1,4 +1,4 @@
-<?php $this->title = 'Home'; ?>
+<?php $this->title = 'Home';?>
 
 <div class="row mt-4">
     <div class="col-md-1 col-lg-2"></div>
@@ -59,4 +59,8 @@
         echo '[]';
     }
     ?>;
+    let specificJoke = <?php echo isset($specificJoke) ? $specificJoke : -1 ;?>;
+    if (specificJoke !== -1) {
+        getJoke(true, specificJoke);
+    }
 </script>

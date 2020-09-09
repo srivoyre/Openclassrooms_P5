@@ -1,6 +1,6 @@
 <?php
 $this->title = 'Profile';
-$this->h1 = 'Profile';
+$this->h1 = $this->title;
 ?>
 
 <div class="row">
@@ -32,7 +32,7 @@ $this->h1 = 'Profile';
                     ?>
                     <div id="joke-container<?= $savedJoke; ?>" class="row border-bottom py-3">
                         <script type="text/javascript">
-                            getSpecificJoke(<?= $savedJoke; ?>);
+                            getJoke(false, <?= $savedJoke; ?>);
                         </script>
                         <div class="col-10">
                             <span id="joke<?= $savedJoke; ?>" class="align-left joke text-wrap"></span>

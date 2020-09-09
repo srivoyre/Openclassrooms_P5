@@ -3,8 +3,6 @@
  ************************************/
 let savedJokesArray;
 let filteredJokesArray;
-let saveBtn;
-let unsaveBtn;
 /*************************************
  * standard functions
  ************************************/
@@ -33,7 +31,9 @@ function setUpHomePage() {
     }
     let newRandomJokeBtn = document.getElementById('newRandomJoke');
     if (newRandomJokeBtn !== null) {
-        newRandomJokeBtn.addEventListener('click', getRandomJoke, false);
+        newRandomJokeBtn.addEventListener('click', ()=> {
+            getJoke(true, '');
+        }, false);
     }
 }
 
@@ -51,11 +51,12 @@ function setUpProfilePage() {
     }, false);
 
     let jokesSpan = document.getElementsByClassName('joke');
-    jokesSpan.forEach(function (item) {
-        if (item.innerHTML === '') {
-            item.innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!.</span>';
+
+    for (let i = 0; i < jokesSpan.length; i++) {
+        if (jokesSpan[i].innerHTML === '') {
+            jokesSpan[i].innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!</span>';
         }
-    });
+    }
 }
 const processResult = function (result, random) {
     let joke = new Joke(JSON.parse(result), random);
@@ -63,7 +64,7 @@ const processResult = function (result, random) {
         && filteredJokesArray !== null
         && filteredJokesArray.indexOf(joke.id.toString()) !== -1
     ) {
-        getRandomJoke();
+        getJoke(true);
     } else {
         joke.createJokeContent();
     }
@@ -96,9 +97,6 @@ function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
 /****************************************
  * function called by user interaction
  ****************************************/
-function getRandomJoke() {
-    new JokeApiXHR(processResult, true, ''); //28
-}
-function getSpecificJoke(jokeApiId) {
-    new JokeApiXHR(processResult, false, jokeApiId.toString());
+function getJoke(random = true, jokeApiId = '') {
+    new JokeApiXHR(processResult, random, jokeApiId.toString());
 }

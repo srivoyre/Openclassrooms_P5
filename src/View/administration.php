@@ -33,7 +33,7 @@ $this->h1 = 'Administration';
             <tr id="jokes-container<?= $flaggedJoke->getJokeApiId(); ?>" class="d-flex flex-wrap justify-content-lg-between">
                 <td id="joke-container<?= $flaggedJoke->getJokeApiId(); ?>" class="col-12 col-lg-10">
                     <script type="text/javascript">
-                        getSpecificJoke(<?= $flaggedJoke->getJokeApiId(); ?>);
+                        getJoke(false, <?= $flaggedJoke->getJokeApiId(); ?>);
                     </script>
                     <span id="joke<?= $flaggedJoke->getJokeApiId(); ?>" class="align-left joke text-wrap"></span>
                     <small class="font-weight-bold font-italic smaller">
