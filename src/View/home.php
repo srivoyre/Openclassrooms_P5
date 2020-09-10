@@ -50,6 +50,7 @@
 </div>
 
 <script type="text/javascript">
+    setUpHomePage();
     filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
     savedJokesArray =
     <?php

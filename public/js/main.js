@@ -19,11 +19,6 @@ function showElement(element) {
 /****************************************
  * App functions
  ****************************************/
-document.addEventListener('DOMContentLoaded',() => {
-    setUpHomePage();
-    setUpProfilePage();
-});
-
 function setUpHomePage() {
     if (document.getElementById('joke-container')
         && document.getElementById('joke').innerHTML === '') {
@@ -40,6 +35,7 @@ function setUpHomePage() {
 function setUpProfilePage() {
     let jokesContainer = document.getElementById('jokes-container');
     let userInfo = document.getElementById('user-info');
+
     document.getElementById('showJokes').addEventListener('click', () => {
         showElement(jokesContainer);
         hideElement(userInfo);
@@ -74,16 +70,11 @@ const processResult = function (result, random) {
             document.getElementById('removeSavedJokeBtn'),
             joke.id);
         showElement(document.getElementById('joke-container'));
-    } else {
-        manageActionButtons(
-            document.getElementById('saveJokeBtn' + joke.id),
-            document.getElementById('removeSavedJokeBtn' + joke.id),
-            joke.id
-        );
     }
 }
 
 function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
+    console.log(saveBtn);
     if( savedJokesArray !== null
         && savedJokesArray.indexOf(jokeId.toString()) === -1
     ) {
