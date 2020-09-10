@@ -159,7 +159,7 @@ class UserDAO extends DAO
                 SET password = ? 
                 WHERE pseudo = ?';
         $this->createQuery($sql, [
-            password_hash($post->get('password'), PASSWORD_BCRYPT),
+            password_hash($post->get('newPassword'), PASSWORD_BCRYPT),
             $pseudo
         ]);
     }
