@@ -30,17 +30,17 @@ $this->h1 = 'Administration';
         foreach($flaggedJokes as $flaggedJoke)
         {
             ?>
-            <tr id="jokes-container<?= $flaggedJoke->getJokeApiId(); ?>" class="d-flex flex-wrap justify-content-lg-between">
-                <td id="joke-container<?= $flaggedJoke->getJokeApiId(); ?>" class="col-12 col-lg-10">
+            <tr id="jokes-container<?= filter_var($flaggedJoke->getJokeApiId(), FILTER_SANITIZE_NUMBER_INT); ?>" class="d-flex flex-wrap justify-content-lg-between">
+                <td id="joke-container<?= filter_var($flaggedJoke->getJokeApiId(),FILTER_SANITIZE_NUMBER_INT); ?>" class="col-12 col-lg-10">
                     <script type="text/javascript">
-                        getJoke(false, <?= $flaggedJoke->getJokeApiId(); ?>);
+                        getJoke(false, <?= filter_var($flaggedJoke->getJokeApiId(), FILTER_SANITIZE_NUMBER_INT); ?>);
                     </script>
-                    <span id="joke<?= $flaggedJoke->getJokeApiId(); ?>" class="align-left joke text-wrap"></span>
+                    <span id="joke<?= filter_var($flaggedJoke->getJokeApiId(), FILTER_SANITIZE_NUMBER_INT); ?>" class="align-left joke text-wrap"></span>
                     <small class="font-weight-bold font-italic smaller">
-                        Reported <?= $flaggedJoke->getFlagCount(); ?> time(s)
+                        Reported <?= filter_var($flaggedJoke->getFlagCount(), FILTER_SANITIZE_NUMBER_INT); ?> time(s)
                     </small>
                 </td>
-                <td id="actionsBtn<?= $flaggedJoke->getJokeApiId(); ?>" class="col-12 col-lg-2 text-lg-right">
+                <td id="actionsBtn<?= filter_var($flaggedJoke->getJokeApiId(),FILTER_SANITIZE_NUMBER_INT); ?>" class="col-12 col-lg-2 text-lg-right">
                     <a type="button" class="btn btn-outline-primary mb-1 mx-1" href="index.php?route=unflagJoke&jokeId=<?= filter_var($flaggedJoke->getId(), FILTER_SANITIZE_NUMBER_INT); ?>">
                         Unflag
                     </a>
@@ -120,6 +120,7 @@ $this->h1 = 'Administration';
                     </a>
                 </td>
                 <td class=" col-12 col-lg-2">
+                    <span class="d-lg-none">Inscrit le </span>
                     <?= filter_var($user->getCreatedAt(), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
                 </td>
                 <td class=" col-12 col-lg-3">
@@ -138,7 +139,7 @@ $this->h1 = 'Administration';
                     else
                     {
                         ?>
-                        <span class="font-italic">
+                        <span class="font-italic smaller">
                         Suppression impossible
                     </span>
                         <?php

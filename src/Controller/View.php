@@ -12,6 +12,7 @@ class View
 {
     private $file;
     private $title;
+    private $h1;
     private $script;
     private $request;
     private $session;
