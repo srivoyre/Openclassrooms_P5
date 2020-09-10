@@ -1,4 +1,4 @@
-<?php $this->title = 'Home'; ?>
+<?php $this->title = 'Home';?>
 
 <div class="row mt-4">
     <div class="col-md-1 col-lg-2"></div>
@@ -31,7 +31,7 @@
                         <i class="far fa-flag"></i>
                     </a>
                 </div>
-                <span id="joke" class="align-left joke text-wrap"></span>
+                <span id="joke" class="align-left align-middle joke text-wrap"></span>
             </div>
             <div class="col-1"></div>
         </div>
@@ -50,6 +50,7 @@
 </div>
 
 <script type="text/javascript">
+    setUpHomePage();
     filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
     savedJokesArray =
     <?php

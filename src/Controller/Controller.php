@@ -24,6 +24,7 @@ abstract class Controller
     protected $get;
     protected $post;
     protected $session;
+    protected $server;
 
     /**
      * Controller constructor.
@@ -39,6 +40,7 @@ abstract class Controller
         $this->get = $this->request->getGet();
         $this->post = $this->request->getPost();
         $this->session = $this->request->getSession();
+        $this->server = $this->request->getServer();
     }
 
 }

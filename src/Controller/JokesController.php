@@ -3,31 +3,32 @@
 namespace App\src\Controller;
 
 use App\src\Parameter;
+
 /**
  * Class JokesController
  * @package App\src\Controller
  */
 class JokesController extends BackController
 {
-
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
-            $jokeApiId = $get->get('jokeApiId');
-            $userId = $this->session->get('user')->getId();
-            if(!$this->isExistingSavedJoke($jokeApiId, $userId)) {
-                $this->savedJokeDAO->addSavedJoke($jokeApiId, $userId);
-                $this->session->set(
-                    'success_message',
-                    'This joke has been saved! You can find it in your profile page.'
-                );
-            } else {
-                $this->session->set(
-                    'info_message',
-                    'You already saved this joke!'
-                );
-            }
-            header('Location: index.php', false);
+        $jokeApiId = $get->get('jokeApiId');
+        $userId = $this->session->get('user')->getId();
+        if (!$this->isExistingSavedJoke((string)$jokeApiId, $userId)) {
+            $this->savedJokeDAO->addSavedJoke((string)$jokeApiId, $userId);
+            $this->session->set(
+                'success_message',
+                'This joke has been saved! You can find it in your profile page.'
+            );
+        }
+        else {
+            $this->session->set(
+                'info_message',
+                'You already saved this joke!'
+            );
+        }
+        header('Location: index.php', false);
         }
     }
 
@@ -46,7 +47,7 @@ class JokesController extends BackController
                 'success_message',
                 'The joke has successfully been removed from your favourites!'
             );
-            header('Location: index.php?');
+            header('Location: '.$this->server->get('HTTP_REFERER'), false);
         }
     }
 
@@ -74,7 +75,7 @@ class JokesController extends BackController
             'success_message',
             'This joke has been reported! It will be reviewed by our team shortly.'
         );
-        header('Location: index.php');
+        header('Location: '.$this->server->get('HTTP_REFERER'), false);
     }
 
     public function unflagJoke(Parameter $get)
@@ -85,7 +86,7 @@ class JokesController extends BackController
                 'success_message',
                 'The joke has successfully been unflagged!'
             );
-            header('Location: index.php?route=administration');
+            header('Location: index.php?route=administration', false);
         }
     }
 
@@ -95,9 +96,9 @@ class JokesController extends BackController
             $this->flaggedJokeDAO->filterJoke($get->get('jokeId'));
             $this->session->set(
                 'success_message',
-                'The joke has successfully been filtered! From now on, it will never be displayed to your visitors.'
+                'The joke has successfully been filtered! From now on, it will not be displayed to your visitors.'
             );
-            header('Location: index.php?route=administration');
+            header('Location: index.php?route=administration', false);
         }
     }
 

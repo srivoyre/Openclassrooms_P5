@@ -3,6 +3,7 @@
 namespace App\src\Controller;
 
 use App\src\Parameter;
+use App\src\Router;
 use http\Client\Curl\User;
 
 /**
@@ -133,12 +134,15 @@ class BackController extends Controller
                         'success_message',
                         'Your email address has been successfully updated!'
                     );
-                    header('Location: index.php?route=profile');
+                    header('Location: index.php?route=profile', false);
+                } else {
+                    return $this->view->render('profile', [
+                        'user' => $this->session->get('user'),
+                        'post' => $post,
+                        'errors' => $errors,
+                        'showUserInfo' => true
+                    ]);
                 }
-                return $this->view->render('profile', [
-                    'user' => $this->session->get('user'),
-                    'errors' => $errors
-                ]);
             }
         }
     }

@@ -3,8 +3,6 @@
  ************************************/
 let savedJokesArray;
 let filteredJokesArray;
-let saveBtn;
-let unsaveBtn;
 /*************************************
  * standard functions
  ************************************/
@@ -21,11 +19,6 @@ function showElement(element) {
 /****************************************
  * App functions
  ****************************************/
-document.addEventListener('DOMContentLoaded',() => {
-    setUpHomePage();
-    setUpProfilePage();
-});
-
 function setUpHomePage() {
     if (document.getElementById('joke-container')
         && document.getElementById('joke').innerHTML === '') {
@@ -33,13 +26,16 @@ function setUpHomePage() {
     }
     let newRandomJokeBtn = document.getElementById('newRandomJoke');
     if (newRandomJokeBtn !== null) {
-        newRandomJokeBtn.addEventListener('click', getRandomJoke, false);
+        newRandomJokeBtn.addEventListener('click', ()=> {
+            getJoke(true, '');
+        }, false);
     }
 }
 
 function setUpProfilePage() {
     let jokesContainer = document.getElementById('jokes-container');
     let userInfo = document.getElementById('user-info');
+
     document.getElementById('showJokes').addEventListener('click', () => {
         showElement(jokesContainer);
         hideElement(userInfo);
@@ -51,11 +47,12 @@ function setUpProfilePage() {
     }, false);
 
     let jokesSpan = document.getElementsByClassName('joke');
-    jokesSpan.forEach(function (item) {
-        if (item.innerHTML === '') {
-            item.innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!.</span>';
+
+    for (let i = 0; i < jokesSpan.length; i++) {
+        if (jokesSpan[i].innerHTML === '') {
+            jokesSpan[i].innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!</span>';
         }
-    });
+    }
 }
 const processResult = function (result, random) {
     let joke = new Joke(JSON.parse(result), random);
@@ -63,7 +60,7 @@ const processResult = function (result, random) {
         && filteredJokesArray !== null
         && filteredJokesArray.indexOf(joke.id.toString()) !== -1
     ) {
-        getRandomJoke();
+        getJoke(true);
     } else {
         joke.createJokeContent();
     }
@@ -73,16 +70,11 @@ const processResult = function (result, random) {
             document.getElementById('removeSavedJokeBtn'),
             joke.id);
         showElement(document.getElementById('joke-container'));
-    } else {
-        manageActionButtons(
-            document.getElementById('saveJokeBtn' + joke.id),
-            document.getElementById('removeSavedJokeBtn' + joke.id),
-            joke.id
-        );
     }
 }
 
 function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
+    console.log(saveBtn);
     if( savedJokesArray !== null
         && savedJokesArray.indexOf(jokeId.toString()) === -1
     ) {
@@ -96,9 +88,6 @@ function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
 /****************************************
  * function called by user interaction
  ****************************************/
-function getRandomJoke() {
-    new JokeApiXHR(processResult, true, ''); //28
-}
-function getSpecificJoke(jokeApiId) {
-    new JokeApiXHR(processResult, false, jokeApiId.toString());
+function getJoke(random = true, jokeApiId = '') {
+    new JokeApiXHR(processResult, random, jokeApiId.toString());
 }
