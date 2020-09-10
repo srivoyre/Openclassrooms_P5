@@ -69,7 +69,7 @@ $this->h1 = $this->title;
                                                id="email"
                                                name="email"
                                                aria-label="E-mail"
-                                               value="<?= filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL); ?>"
+                                               value="<?= isset($post) ? filter_var((string)$post->get('email')) : filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL); ?>"
                                                aria-required="true"
                                                required>
                                         <br />

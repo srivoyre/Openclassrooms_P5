@@ -138,6 +138,7 @@ class BackController extends Controller
                 } else {
                     return $this->view->render('profile', [
                         'user' => $this->session->get('user'),
+                        'post' => $post,
                         'errors' => $errors,
                         'showUserInfo' => true
                     ]);
