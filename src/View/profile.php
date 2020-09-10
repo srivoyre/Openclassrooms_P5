@@ -12,7 +12,6 @@ $this->h1 = $this->title;
             <div id="showJokes" type="button" class="btn btn-primary border border-light col-6 col-lg-4">Saved jokes</div>
             <div id="showUserInfo" type="button" class="btn btn-primary border border-light col-6 col-lg-4">Personal info</div>
         </div>
-
         <div class="row my-3">
             <div id="jokes-container" class="col-12 col-sm-10 p-3">
                 <script type="text/javascript">
@@ -53,7 +52,6 @@ $this->h1 = $this->title;
                 }
                 ?>
             </div>
-
             <div id="user-info" class="col-12 d-none">
                 <div class="col-12">
                     <form method="post" action="index.php?route=updateEmail">
@@ -78,6 +76,10 @@ $this->h1 = $this->title;
                                         <span class="alert-danger">
                                          <?= isset($errors['email']) ? filter_var($errors['email'], FILTER_SANITIZE_STRING) : ''; ?>
                                     </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 pb-2">
                                         <input class="btn btn-primary" type="submit" value="Update email" id="submitEmail" name="submitEmail">
                                     </div>
                                 </div>
@@ -97,3 +99,12 @@ $this->h1 = $this->title;
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    setUpProfilePage();
+    let showUserInfo = <?php echo isset($showUserInfo) ? $showUserInfo : 0;?>;
+    if (showUserInfo == true) {
+        showElement(document.getElementById('user-info'));
+        hideElement(document.getElementById('jokes-container'))
+    }
+</script>
