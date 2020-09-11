@@ -13,6 +13,7 @@ class Session
     /**
      * Session constructor.
      * @param $session
+     * @return void
      */
     public function __construct($session)
     {
@@ -22,6 +23,7 @@ class Session
     /**
      * @param string $name
      * @param $value
+     * @return void
      */
     public function set(string $name, $value)
     {
@@ -55,17 +57,24 @@ class Session
 
     /**
      * @param string $name
+     * @return void
      */
     public function remove(string $name)
     {
         unset($_SESSION[$name]);
     }
 
+    /**
+     * @return void
+     */
     public function start()
     {
         session_start();
     }
 
+    /**
+     * @return void
+     */
     public function stop()
     {
         session_destroy();

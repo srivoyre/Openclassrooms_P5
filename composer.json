@@ -1,4 +1,27 @@
 {
+  "name": "srivoyre/openclassrooms_p5",
+  "version": "0.2.0",
+  "type": "project",
+  "description": "Personal project. Random joke generator.",
+  "keywords": [
+    "php",
+    "javascript",
+    "random",
+    "generator",
+    "humour",
+    "jokes",
+    "entertainment"
+  ],
+  "homepage": "https://github.com/srivoyre/Openclassrooms_p5",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sophie de Rivoyre",
+      "email": "s.rivoyre@gmail.com",
+      "homepage": "https://github.com/srivoyre/",
+      "role": "Developer"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "App\\Src\\": "src/"
@@ -8,5 +31,11 @@
     "twig/twig":"2.0",
     "tracy/tracy": "^2.7",
     "ext-json": "*"
+  },
+  "support": {
+    "email": "s.rivoyre@gmail.com",
+    "issues": "https://github.com/srivoyre/Openclassrooms_p5/issues",
+    "source": "https://github.com/srivoyre/Openclassrooms_p5"
   }
 }
+

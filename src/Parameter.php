@@ -32,6 +32,7 @@ class Parameter
     /**
      * @param string $name
      * @param $value
+     * @return void
      */
     public function set(string $name, $value)
     {

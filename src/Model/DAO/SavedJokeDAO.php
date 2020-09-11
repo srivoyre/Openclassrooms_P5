@@ -26,6 +26,11 @@ class SavedJokeDAO extends DAO
         return $savedJoke;
     }
 
+    /**
+     * @param int $jokeApiId
+     * @param int $userId
+     * @return SavedJoke|mixed
+     */
     public function getSavedJoke(int $jokeApiId, int $userId)
     {
         $sql = 'SELECT id, user_id, joke_api_id, createdAt 
@@ -48,6 +53,10 @@ class SavedJokeDAO extends DAO
         return $savedJoke;
     }
 
+    /**
+     * @param int $userId
+     * @return array
+     */
     public function getSavedJokes(int $userId)
     {
         // We do not filter jokes saved by user. If the joke has been reported by another user,
@@ -67,6 +76,11 @@ class SavedJokeDAO extends DAO
 
     }
 
+    /**
+     * @param int $jokeApiId
+     * @param int $userId
+     * @return void
+     */
     public function addSavedJoke(int $jokeApiId, int $userId)
     {
         $sql = 'INSERT INTO savedJoke (joke_api_id, user_id, createdAt) 
@@ -77,6 +91,11 @@ class SavedJokeDAO extends DAO
         ]);
     }
 
+    /**
+     * @param int $savedJokeId
+     * @param int $userId
+     * @return void
+     */
     public function deleteSavedJoke(int $savedJokeId, int $userId)
     {
         $sql = 'DELETE 
@@ -89,6 +108,10 @@ class SavedJokeDAO extends DAO
         ]);
     }
 
+    /**
+     * @param int $userId
+     * @return void
+     */
     public function deleteUserSavedJokes(int $userId)
     {
         $sql = 'DELETE 

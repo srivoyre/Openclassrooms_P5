@@ -29,6 +29,7 @@ class View
     /**
      * @param string $template
      * @param array $data
+     * @return void
      */
     public function render(string $template, $data = [])
     {

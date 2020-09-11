@@ -7,20 +7,6 @@ let filteredJokesArray;
 /*************************************
  * standard functions
  ************************************/
-function hideElement(element) {
-    /*if (!element.classList.contains('d-none')) {
-        element.classList.add('d-none');
-    }*/
-    addClass(element, 'd-none');
-}
-
-function showElement(element) {
-    /*if (element.classList.contains('d-none')) {
-        element.classList.remove('d-none');
-    }*/
-    removeClass(element, 'd-none')
-}
-
 function addClass(element, className) {
     if (!element.classList.contains(className)) {
         element.classList.add(className);
@@ -31,6 +17,14 @@ function removeClass(element, className) {
     if (element.classList.contains(className)) {
         element.classList.remove(className);
     }
+}
+
+function hideElement(element) {
+    addClass(element, 'd-none');
+}
+
+function showElement(element) {
+    removeClass(element, 'd-none')
 }
 
 /****************************************
@@ -72,15 +66,17 @@ function checkEmail() {
 function checkPassword() {
     let password = document.getElementById('password');
     let newPassword = document.getElementById('newPassword');
+    let eltToCheck;
 
-    if (password !== null) {
-        password.addEventListener('input', (e) => {
-            return checkInputMinLength(password, e.target.value, 6);
-        });
-    }
     if (newPassword !== null) {
-        newPassword.addEventListener('input', (e) => {
-            return checkInputMinLength(newPassword, e.target.value, 6);
+        eltToCheck = newPassword;
+    } else {
+        eltToCheck = password;
+    }
+
+    if (eltToCheck !== null) {
+        eltToCheck.addEventListener('input', (e) => {
+            return checkInputMinLength(eltToCheck, e.target.value, 6);
         });
     }
 }
@@ -108,7 +104,6 @@ function validateInput(elt, validInput) {
 function checkFormSubmission() {
     'use strict';
     let forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
     let validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(e) {
             if (form.checkValidity() === false) {
@@ -153,7 +148,7 @@ function setUpProfilePage() {
 
     for (let i = 0; i < jokesSpan.length; i++) {
         if (jokesSpan[i].innerHTML === '') {
-            jokesSpan[i].innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!</span>';
+            showElement(jokesSpan[i].nextElementSibling);
         }
     }
 }
