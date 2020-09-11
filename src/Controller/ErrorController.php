@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\Controller;
+namespace App\Src\Controller;
 
 /**
  * Class ErrorController
- * @package App\src\Controller
+ * @package App\Src\Controller
  */
 class ErrorController extends Controller
 {

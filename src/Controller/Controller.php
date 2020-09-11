@@ -1,17 +1,17 @@
 <?php
 
-namespace App\src\Controller;
+namespace App\Src\Controller;
 
-use App\src\Model\DAO\FlaggedJokeDAO;
-use App\src\Model\DAO\SavedJokeDAO;
-use App\src\Model\DAO\UserDAO;
-use App\src\Controller\View;
-use App\src\Constraint\Validation;
-use App\src\Request;
+use App\Src\Model\DAO\FlaggedJokeDAO;
+use App\Src\Model\DAO\SavedJokeDAO;
+use App\Src\Model\DAO\UserDAO;
+use App\Src\Controller\View;
+use App\Src\Constraint\Validation;
+use App\Src\Request;
 
 /**
  * Class Controller
- * @package App\src\controller
+ * @package App\Src\controller
  */
 abstract class Controller
 {

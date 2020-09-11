@@ -1,18 +1,21 @@
 <?php
 
-namespace App\src\Controller;
+namespace App\Src\Controller;
 
-use App\src\Parameter;
+use App\Src\Parameter;
 
 /**
  * Class JokesController
- * @package App\src\Controller
+ * @package App\Src\Controller
  */
 class JokesController extends BackController
 {
     public function saveJoke(Parameter $get)
     {
-        if ($this->checkLoggedIn()) {
+        if (!$this->checkLoggedIn()) {
+            $frontController = new FrontController();
+            $frontController->manageLogin($this->post);
+        }
         $jokeApiId = $get->get('jokeApiId');
         $userId = $this->session->get('user')->getId();
         if (!$this->isExistingSavedJoke((string)$jokeApiId, $userId)) {
@@ -29,7 +32,6 @@ class JokesController extends BackController
             );
         }
         header('Location: index.php', false);
-        }
     }
 
     public function isExistingSavedJoke(string $jokeApiId, string $userId)

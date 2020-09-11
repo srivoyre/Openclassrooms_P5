@@ -4,5 +4,5 @@ require_once '../vendor/autoload.php';
 use Tracy\Debugger;
 Debugger::enable();
 session_start();
-$router = new App\src\Router();
+$router = new App\Src\Router();
 $router->run();

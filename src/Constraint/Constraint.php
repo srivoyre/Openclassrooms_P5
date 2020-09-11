@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\Constraint;
+namespace App\Src\Constraint;
 
 /**
  * Class Constraint
- * @package App\src\Constraint
+ * @package App\Src\Constraint
  */
 class Constraint
 {
@@ -16,7 +16,7 @@ class Constraint
     public function notBlank(string $name, $value)
     {
         if (empty($value)) {
-            return '<p>Le champ '.$name.' saisi est vide</p>';
+            return 'Le champ '.$name.' saisi est vide';
         }
     }
 
@@ -29,7 +29,7 @@ class Constraint
     public function minLength(string $name, $value, int $minSize)
     {
         if (strlen($value) < $minSize) {
-            return '<p>'.$name.' field must contain at least '.$minSize.' characters</p>';
+            return $name.' field must contain at least '.$minSize.' characters';
         }
     }
 
@@ -42,7 +42,7 @@ class Constraint
     public function maxLength(string $name, $value, int $maxSize)
     {
         if (strlen($value) > $maxSize) {
-            return '<p>'.$name.' must contain a maximum of '.$maxSize.' characters</p>';
+            return $name.' must contain a maximum of '.$maxSize.' characters';
         }
     }
 
@@ -53,7 +53,7 @@ class Constraint
     public function isPositiveInteger($value)
     {
         if (!is_int($value + 0) || ($value +0) < 0) {
-            return '<p>Please, enter a positive whole number</p>';
+            return 'Please, enter a positive whole number';
         }
     }
 
@@ -64,7 +64,7 @@ class Constraint
     public function isEmail($value)
     {
         if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            return '<p>Please, enter a valid email</p>';
+            return 'Please, enter a valid email';
         }
     }
 

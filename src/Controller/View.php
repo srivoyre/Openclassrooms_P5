@@ -1,12 +1,12 @@
 <?php
 
-namespace App\src\Controller;
+namespace App\Src\Controller;
 
-use App\src\Request;
+use App\Src\Request;
 
 /**
  * Class View
- * @package App\src\Controller
+ * @package App\Src\Controller
  */
 class View
 {

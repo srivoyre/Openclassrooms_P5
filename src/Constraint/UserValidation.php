@@ -1,12 +1,12 @@
 <?php
 
-namespace App\src\Constraint;
+namespace App\Src\Constraint;
 
-use App\src\Parameter;
+use App\Src\Parameter;
 
 /**
  * Class UserValidation
- * @package App\src\Constraint
+ * @package App\Src\Constraint
  */
 class UserValidation extends Validation
 {

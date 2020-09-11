@@ -1,14 +1,14 @@
 <?php
 
-namespace App\src\Model\DAO;
+namespace App\Src\Model\DAO;
 
-use App\src\Controller\ErrorController;
+use App\Src\Controller\ErrorController;
 use PDO;
 use Exception;
 
 /**
  * Class DAO
- * @package App\src\model\DAO
+ * @package App\Src\model\DAO
  */
 abstract class DAO
 {

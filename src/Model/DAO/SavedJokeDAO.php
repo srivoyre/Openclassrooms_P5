@@ -1,13 +1,13 @@
 <?php
 
-namespace App\src\Model\DAO;
+namespace App\Src\Model\DAO;
 
-use App\src\Parameter;
-use App\src\Model\SavedJoke;
+use App\Src\Parameter;
+use App\Src\Model\SavedJoke;
 
 /**
  * Class SavedJokeDAO
- * @package App\src\Model\DAO
+ * @package App\Src\Model\DAO
  */
 class SavedJokeDAO extends DAO
 {
