@@ -83,7 +83,7 @@ class JokesController extends BackController
     public function unflagJoke(Parameter $get)
     {
         if ($this->checkAdmin()) {
-            $this->flaggedJokeDAO->deleteFlaggedJoke($get->get('jokeId'));
+            $this->flaggedJokeDAO->deleteFlaggedJoke((int)$get->get('jokeId'));
             $this->session->set(
                 'success_message',
                 'The joke has successfully been unflagged!'
@@ -95,7 +95,7 @@ class JokesController extends BackController
     public function filterJoke(Parameter $get)
     {
         if ($this->checkAdmin()) {
-            $this->flaggedJokeDAO->filterJoke($get->get('jokeId'));
+            $this->flaggedJokeDAO->filterJoke((int)$get->get('jokeId'));
             $this->session->set(
                 'success_message',
                 'The joke has successfully been filtered! From now on, it will not be displayed to your visitors.'

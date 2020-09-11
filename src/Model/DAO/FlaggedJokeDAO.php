@@ -79,7 +79,7 @@ class FlaggedJokeDAO extends DAO
         ]);
     }
 
-    public function filterJoke(string $jokeId)
+    public function filterJoke(int $jokeId)
     {
         $sql = 'UPDATE flaggedJoke 
                 SET filtered = :bool 
