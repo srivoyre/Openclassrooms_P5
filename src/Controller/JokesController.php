@@ -12,26 +12,25 @@ class JokesController extends BackController
 {
     public function saveJoke(Parameter $get)
     {
-        if (!$this->checkLoggedIn()) {
-            $frontController = new FrontController();
-            $frontController->manageLogin($this->post);
+        if ($this->checkLoggedIn()) {
+            $jokeApiId = $get->get('jokeApiId');
+            $userId = $this->session->get('user')->getId();
+
+            if (!$this->isExistingSavedJoke((int)$jokeApiId, $userId)) {
+                $this->savedJokeDAO->addSavedJoke((int)$jokeApiId, $userId);
+                $this->session->set(
+                    'success_message',
+                    'This joke has been saved! You can find it in your profile page.'
+                );
+            }
+            else {
+                $this->session->set(
+                    'info_message',
+                    'You already saved this joke!'
+                );
+            }
+            header('Location: index.php');
         }
-        $jokeApiId = $get->get('jokeApiId');
-        $userId = $this->session->get('user')->getId();
-        if (!$this->isExistingSavedJoke((string)$jokeApiId, $userId)) {
-            $this->savedJokeDAO->addSavedJoke((string)$jokeApiId, $userId);
-            $this->session->set(
-                'success_message',
-                'This joke has been saved! You can find it in your profile page.'
-            );
-        }
-        else {
-            $this->session->set(
-                'info_message',
-                'You already saved this joke!'
-            );
-        }
-        header('Location: index.php', false);
     }
 
     public function isExistingSavedJoke(string $jokeApiId, string $userId)
