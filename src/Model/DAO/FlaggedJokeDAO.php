@@ -27,6 +27,10 @@ class FlaggedJokeDAO extends DAO
         return $flaggedJoke;
     }
 
+    /**
+     * @param bool $filtered
+     * @return array
+     */
     public function getFlaggedJokes($filtered = false)
     {
         $sql = 'SELECT id, joke_api_id, flag_count, filtered, createdAt 
@@ -46,6 +50,10 @@ class FlaggedJokeDAO extends DAO
         return $flaggedJokes;
     }
 
+    /**
+     * @param int $jokeApiId
+     * @return mixed
+     */
     public function isFlaggedJoke(int $jokeApiId)
     {
         $sql = 'SELECT id, joke_api_id, flag_count, filtered, createdAt
@@ -57,7 +65,11 @@ class FlaggedJokeDAO extends DAO
 
         return $flaggedJoke;
     }
-    
+
+    /**
+     * @param int $jokeApiId
+     * @return void
+     */
     public function addFlaggedJoke(int $jokeApiId)
     {
         $sql = 'INSERT INTO flaggedJoke (joke_api_id, flag_count, filtered, createdAt) 
@@ -69,6 +81,10 @@ class FlaggedJokeDAO extends DAO
         ]);
     }
 
+    /**
+     * @param int $jokeApiId
+     * @return void
+     */
     public function flagExistingJoke(int $jokeApiId)
     {
         $sql = 'UPDATE flaggedJoke 
@@ -79,6 +95,10 @@ class FlaggedJokeDAO extends DAO
         ]);
     }
 
+    /**
+     * @param int $jokeId
+     * @return void
+     */
     public function filterJoke(int $jokeId)
     {
         $sql = 'UPDATE flaggedJoke 
@@ -90,6 +110,10 @@ class FlaggedJokeDAO extends DAO
         ]);
     }
 
+    /**
+     * @param int $flaggedJokeId
+     * @return void
+     */
     public function deleteFlaggedJoke(int $flaggedJokeId)
     {
         $sql = 'DELETE 

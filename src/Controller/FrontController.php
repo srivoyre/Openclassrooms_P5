@@ -12,7 +12,7 @@ use App\Src\Parameter;
 class FrontController extends Controller
 {
     /**
-     * @return View
+     * @return void
      */
     public function home()
     {
@@ -25,7 +25,7 @@ class FrontController extends Controller
 
     /**
      * @param Parameter $post
-     * @return View
+     * @return voif
      */
     public function register(Parameter $post)
     {
@@ -46,7 +46,8 @@ class FrontController extends Controller
 
     /**
      * @param Parameter $post
-     * @return View
+     * @param bool $registering
+     * @return void
      */
     public function login(Parameter $post, $registering = false)
     {
@@ -82,6 +83,10 @@ class FrontController extends Controller
         }
     }
 
+    /**
+     * @param Parameter $post
+     * @return array
+     */
     private function checkUserInfo(Parameter $post)
     {
         $errors = $this->validation->validate($post, 'User');
@@ -104,6 +109,10 @@ class FrontController extends Controller
         return $errors;
     }
 
+    /**
+     * @param Parameter $post
+     * @return array|string
+     */
     private function checkUserPassword(Parameter $post)
     {
         // We give the user the possibility to login with either his pseudo or his email

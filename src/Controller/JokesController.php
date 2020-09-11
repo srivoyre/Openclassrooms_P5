@@ -10,6 +10,10 @@ use App\Src\Parameter;
  */
 class JokesController extends BackController
 {
+    /**
+     * @param Parameter $get
+     * @return void
+     */
     public function saveJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
@@ -33,6 +37,11 @@ class JokesController extends BackController
         }
     }
 
+    /**
+     * @param string $jokeApiId
+     * @param string $userId
+     * @return \App\Src\Model\SavedJoke|mixed
+     */
     public function isExistingSavedJoke(string $jokeApiId, string $userId)
     {
         if ($this->checkLoggedIn()) {
@@ -40,6 +49,10 @@ class JokesController extends BackController
         }
     }
 
+    /**
+     * @param Parameter $get
+     * @return void
+     */
     public function removeSavedJoke(Parameter $get)
     {
         if ($this->checkLoggedIn()) {
@@ -52,6 +65,9 @@ class JokesController extends BackController
         }
     }
 
+    /**
+     * @return array
+     */
     public function getUserSavedJokesApiIdArray()
     {
         if ($this->checkLoggedIn()) {
@@ -64,6 +80,10 @@ class JokesController extends BackController
         }
     }
 
+    /**
+     * @param Parameter $get
+     * @return void
+     */
     public function flagJoke(Parameter $get)
     {
         $jokeApiId = (int)$get->get('jokeApiId');
@@ -79,6 +99,10 @@ class JokesController extends BackController
         header('Location: '.$this->server->get('HTTP_REFERER'), false);
     }
 
+    /**
+     * @param Parameter $get
+     * @return void
+     */
     public function unflagJoke(Parameter $get)
     {
         if ($this->checkAdmin()) {
@@ -91,6 +115,10 @@ class JokesController extends BackController
         }
     }
 
+    /**
+     * @param Parameter $get
+     * @return void
+     */
     public function filterJoke(Parameter $get)
     {
         if ($this->checkAdmin()) {
@@ -103,6 +131,9 @@ class JokesController extends BackController
         }
     }
 
+    /**
+     * @return array
+     */
     public function getFilteredJokesApiIdArray()
     {
         $filteredJokes = $this->flaggedJokeDAO->getFlaggedJokes(true);

@@ -46,6 +46,9 @@ class BackController extends Controller
         }
     }
 
+    /**
+     * @return void
+     */
     public function home()
     {
         if ($this->checkLoggedIn()) {
@@ -59,6 +62,9 @@ class BackController extends Controller
         }
     }
 
+    /**
+     * @return void
+     */
     public function administration()
     {
         if ($this->checkAdmin()) {
@@ -73,7 +79,7 @@ class BackController extends Controller
     }
 
     /**
-     * @return View
+     * @return void
      */
     public function profile()
     {
@@ -90,7 +96,7 @@ class BackController extends Controller
 
     /**
      * @param Parameter $post
-     * @return View
+     * @return void
      */
     public function updatePassword(Parameter $post)
     {
@@ -122,7 +128,7 @@ class BackController extends Controller
 
     /**
      * @param Parameter $post
-     * @return View
+     * @return void
      */
     public function updateEmail(Parameter $post)
     {
@@ -148,6 +154,9 @@ class BackController extends Controller
         }
     }
 
+    /**
+     * @return void
+     */
     public function logout()
     {
         if ($this->checkLoggedIn()) {
@@ -155,6 +164,9 @@ class BackController extends Controller
         }
     }
 
+    /**
+     * @return void
+     */
     public function deleteAccount()
     {
         if ($this->checkLoggedIn()) {

@@ -9,7 +9,7 @@ namespace App\Src\Controller;
 class ErrorController extends Controller
 {
     /**
-     * @return View
+     * @return void
      */
     public function errorNotFound()
     {
@@ -17,7 +17,7 @@ class ErrorController extends Controller
     }
 
     /**
-     * @return View
+     * @return void
      */
     public function errorServer()
     {
@@ -25,7 +25,7 @@ class ErrorController extends Controller
     }
 
     /**
-     * @return View
+     * @return void
      */
     public function errorPermission()
     {

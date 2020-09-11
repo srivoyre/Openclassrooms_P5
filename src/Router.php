@@ -45,8 +45,7 @@ class Router
                 $this->frontController->home();
             }
         } catch (Exception $ex) {
-            //$this->errorController->errorServer();
-            echo $ex->getMessage();
+            $this->errorController->errorServer();
         }
     }
 

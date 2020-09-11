@@ -68,6 +68,7 @@ class UserDAO extends DAO
 
     /**
      * @param Parameter $post
+     * @return void
      */
     public function register(Parameter $post)
     {
@@ -152,6 +153,7 @@ class UserDAO extends DAO
     /**
      * @param Parameter $post
      * @param string $pseudo
+     * @return void
      */
     public function updatePassword(Parameter $post, string $pseudo)
     {
@@ -167,6 +169,7 @@ class UserDAO extends DAO
     /**
      * @param Parameter $post
      * @param string $pseudo
+     * @return void
      */
     public function updateEmail(Parameter $post, string $pseudo)
     {
@@ -181,6 +184,7 @@ class UserDAO extends DAO
 
     /**
      * @param string $userId
+     * @return void
      */
     public function deleteUser(string $userId)
     {
