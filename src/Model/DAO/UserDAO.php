@@ -107,10 +107,10 @@ class UserDAO extends DAO
 
         if ($param === 'register') {
             if ($isUnique && $fieldToCheck === 'pseudo') {
-                return '<p>Ce pseudo n\'est pas disponible</p>';
+                return 'Ce pseudo n\'est pas disponible';
             }
             elseif ($isUnique && $fieldToCheck === 'email') {
-                return '<p>Un compte associé à cet e-mail existe déjà ! <a href="../public/index.php?route=login">Je me connecte</a> </p>';
+                return 'Un compte associé à cet e-mail existe déjà ! <a href="../public/index.php?route=login">Je me connecte</a>';
             }
         } elseif($param === 'login') {
             return $isUnique;
