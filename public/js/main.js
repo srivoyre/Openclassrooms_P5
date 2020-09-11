@@ -104,7 +104,6 @@ function validateInput(elt, validInput) {
 function checkFormSubmission() {
     'use strict';
     let forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
     let validation = Array.prototype.filter.call(forms, function(form) {
         form.addEventListener('submit', function(e) {
             if (form.checkValidity() === false) {
@@ -149,7 +148,7 @@ function setUpProfilePage() {
 
     for (let i = 0; i < jokesSpan.length; i++) {
         if (jokesSpan[i].innerHTML === '') {
-            jokesSpan[i].innerHTML = '<span class="font-italic smaller">Sorry, joke not available at the moment. Come back in a few minutes!</span>';
+            showElement(jokesSpan[i].nextElementSibling);
         }
     }
 }

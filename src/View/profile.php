@@ -35,6 +35,9 @@ $this->h1 = $this->title;
                         </script>
                         <div class="col-10">
                             <span id="joke<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>" class="align-left joke text-wrap"></span>
+                            <span id="<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>-unavailable" class="font-italic smaller d-none">
+                                Sorry, joke not available at the moment. Come back in a few minutes!
+                            </span>
                         </div>
                         <div id="actions-container<?=filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT);?>" class="col-2 actions-container text-left">
                             <a type="button"
