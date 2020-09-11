@@ -22,7 +22,7 @@ class BackController extends Controller
                 'warning_message',
                 'You need to be logged in to perform this action!'
             );
-            header('Location: index.php?route=login');
+            return $this->view->render('login');
         } else {
             return true;
         }
@@ -40,6 +40,7 @@ class BackController extends Controller
                 'You do not have sufficient permission to access this page.'
             );
             header('Location: index.php?route=errorPermission');
+            return false;
         } else {
             return true;
         }

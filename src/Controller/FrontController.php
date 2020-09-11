@@ -44,24 +44,18 @@ class FrontController extends Controller
         }
     }
 
-    public function manageLogin(Parameter $post)
-    {
-        if($post->get('submit')) {
-            $this->login($post);
-        } elseif ($this->session->get('loggedIn')) {
-            header('Location: index.php?route=profile', false);
-            //return $this->view->render('home');
-        } else {
-            return $this->view->render('login');
-        }
-    }
     /**
      * @param Parameter $post
      * @return View
      */
     public function login(Parameter $post, $registering = false)
     {
+        if(!$post->get('submit')) {
+            return $this->view->render('login');
+        }
+
         $checkPassword = $this->checkUserPassword($post);
+        $referer = (string)$this->server->get('QUERY_STRING');
         if ($checkPassword) {
             $this->session->set('loggedIn', true);
             $this->session->set('user', $checkPassword['user']);
@@ -70,8 +64,7 @@ class FrontController extends Controller
                 'info_message',
                 $msg
             );
-            return;
-            //header('Location: index.php?route=profile', false);
+            header('Location: index.php?route=login');
         } else {
             $this->session->set(
                 'error_message',
@@ -80,7 +73,13 @@ class FrontController extends Controller
             return $this->view->render('login', [
                 'post' => $post
             ]);
-        };
+        }
+
+        if (strpos($referer, 'login') || strpos($referer, 'register')) {
+            header('Location: index.php');
+        } else {
+            header('Location: '. $referer);
+        }
     }
 
     private function checkUserInfo(Parameter $post)

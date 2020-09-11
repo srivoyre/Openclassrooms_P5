@@ -75,7 +75,7 @@ class Router
                 $this->frontController->register($this->request->getPost());
                 break;
             case 'login':
-                $this->frontController->manageLogin($this->request->getPost());
+                $this->frontController->login($this->request->getPost());
                 break;
             case 'profile':
                 $this->backController->profile();
