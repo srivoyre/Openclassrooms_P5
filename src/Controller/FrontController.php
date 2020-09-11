@@ -1,13 +1,13 @@
 <?php
 
-namespace App\src\Controller;
+namespace App\Src\Controller;
 
-use App\src\Controller\JokesController;
-use App\src\Parameter;
+use App\Src\Controller\JokesController;
+use App\Src\Parameter;
 
 /**
  * Class FrontController
- * @package App\src\controller
+ * @package App\Src\controller
  */
 class FrontController extends Controller
 {
@@ -49,7 +49,8 @@ class FrontController extends Controller
         if($post->get('submit')) {
             $this->login($post);
         } elseif ($this->session->get('loggedIn')) {
-            return $this->view->render('home');
+            header('Location: index.php?route=profile', false);
+            //return $this->view->render('home');
         } else {
             return $this->view->render('login');
         }
@@ -69,7 +70,8 @@ class FrontController extends Controller
                 'info_message',
                 $msg
             );
-            header('Location: index.php?route=profile', false);
+            return;
+            //header('Location: index.php?route=profile', false);
         } else {
             $this->session->set(
                 'error_message',
@@ -78,7 +80,7 @@ class FrontController extends Controller
             return $this->view->render('login', [
                 'post' => $post
             ]);
-        }
+        };
     }
 
     private function checkUserInfo(Parameter $post)

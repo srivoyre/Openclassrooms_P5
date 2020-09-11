@@ -1,14 +1,14 @@
 <?php
 
-namespace App\src\Controller;
+namespace App\Src\Controller;
 
-use App\src\Parameter;
-use App\src\Router;
+use App\Src\Parameter;
+use App\Src\Router;
 use http\Client\Curl\User;
 
 /**
  * Class BackController
- * @package App\src\Controller
+ * @package App\Src\Controller
  */
 class BackController extends Controller
 {

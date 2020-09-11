@@ -1,13 +1,13 @@
 <?php
 
-namespace App\src\Model\DAO;
+namespace App\Src\Model\DAO;
 
-use App\src\Parameter;
-use App\src\Model\User;
+use App\Src\Parameter;
+use App\Src\Model\User;
 
 /**
  * Class UserDAO
- * @package App\src\Model\DAO
+ * @package App\Src\Model\DAO
  */
 class UserDAO extends DAO
 {
@@ -107,10 +107,10 @@ class UserDAO extends DAO
 
         if ($param === 'register') {
             if ($isUnique && $fieldToCheck === 'pseudo') {
-                return '<p>Ce pseudo n\'est pas disponible</p>';
+                return 'Ce pseudo n\'est pas disponible';
             }
             elseif ($isUnique && $fieldToCheck === 'email') {
-                return '<p>Un compte associé à cet e-mail existe déjà ! <a href="../public/index.php?route=login">Je me connecte</a> </p>';
+                return 'Un compte associé à cet e-mail existe déjà ! <a href="../public/index.php?route=login">Je me connecte</a>';
             }
         } elseif($param === 'login') {
             return $isUnique;

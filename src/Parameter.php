@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src;
+namespace App\Src;
 
 /**
  * Class Parameter
- * @package App\src
+ * @package App\Src
  */
 class Parameter
 {

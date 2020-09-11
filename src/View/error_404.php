@@ -1,11 +1,13 @@
-<?php $this->title = "404 Error: Page not found"; ?>
-
-<div id="notfound">
-    <div class="notfound">
-        <div class="notfound-404">
-            <h1>Oops!</h1>
-            <h2>404 - The Page can't be found</h2>
+<?php
+$this->title = '404 Error: Page not found';
+$this->h1 = 'Page not found';
+?>
+<div class="row my-4 py-4">
+    <div class="col-12 text-center">
+        <h2 class="font-weight-light font-italic pb-3">Oops! Page not found :(</h2>
+        <p class="pb-3">The page your are looking for doesn't exist or we couldn't find it.</p>
+        <div>
+            <a type="button" class="btn btn-primary" href="index.php">Take me home</a>
         </div>
-        <a type="button" class="btn btn-light mb-5" href="index.php">Go To Homepage</a>
-    </div><!-- This templates was made by Colorlib (https://colorlib.com)-->
+    </div>
 </div>

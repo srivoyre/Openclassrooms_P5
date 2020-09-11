@@ -1,13 +1,13 @@
 <?php
 
-namespace App\src\Model\DAO;
+namespace App\Src\Model\DAO;
 
-use App\src\Parameter;
-use App\src\Model\FlaggedJoke;
+use App\Src\Parameter;
+use App\Src\Model\FlaggedJoke;
 
 /**
  * Class FlaggedJokeDAO
- * @package App\src\Model\DAO
+ * @package App\Src\Model\DAO
  */
 class FlaggedJokeDAO extends DAO
 {
@@ -79,7 +79,7 @@ class FlaggedJokeDAO extends DAO
         ]);
     }
 
-    public function filterJoke(string $jokeId)
+    public function filterJoke(int $jokeId)
     {
         $sql = 'UPDATE flaggedJoke 
                 SET filtered = :bool 

@@ -51,11 +51,11 @@
 
 <script type="text/javascript">
     setUpHomePage();
-    filteredJokesArray = <?php echo json_encode($filteredJokes); ?>;
+    filteredJokesArray = <?php echo json_encode(filter_var_array($filteredJokes, FILTER_SANITIZE_NUMBER_INT)); ?>;
     savedJokesArray =
     <?php
     if ($this->session->get('loggedIn')) {
-        echo json_encode($savedJokesArray);
+        echo json_encode(filter_var_array($savedJokesArray, FILTER_SANITIZE_NUMBER_INT));
     } else {
         echo '[]';
     }

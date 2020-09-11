@@ -1,10 +1,10 @@
 <?php
 
-namespace App\src\Model;
+namespace App\Src\Model;
 
 /**
  * Class SavedJoke
- * @package App\src\Model
+ * @package App\Src\Model
  */
 class SavedJoke
 {

@@ -17,6 +17,7 @@ class Joke {
     setJokeContainer() {
         if(this.random) {
             this.setRandomJokeActions();
+            this.manageActionButtons();
             return this.container = document.getElementById('joke');
         } else {
             return this.container = document.getElementById('joke' + this.id);
@@ -43,11 +44,27 @@ class Joke {
 
     setDynamicApiId(elementId) {
         let url = new URL(document.getElementById(elementId).getAttribute('href'), 'http://localhost:8080/projects/OC_P5/public/');
+
         let search_params = url.searchParams;
         search_params.set('jokeApiId', this.id);
         url.search = search_params.toString();
+
         let new_url = url.toString();
         document.getElementById(elementId).setAttribute('href', new_url);
     }
 
+    manageActionButtons() {
+        let saveBtn = document.getElementById('saveJokeBtn');
+        let unsaveBtn = document.getElementById('removeSavedJokeBtn');
+
+        if( savedJokesArray !== null
+            && savedJokesArray.indexOf(this.id.toString()) === -1
+        ) {
+            hideElement(unsaveBtn);
+            showElement(saveBtn);
+        } else {
+            hideElement(saveBtn);
+            showElement(unsaveBtn);
+        }
+    }
 }

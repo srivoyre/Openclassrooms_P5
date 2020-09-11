@@ -1,10 +1,10 @@
-<?php $this->title = 'Modifier mon mot de passe'; ?>
-<?php $this->h1 = 'Update my password'; ?>
+<?php $this->title = 'Update my password'; ?>
+<?php $this->h1 = $this->title; ?>
 
 <div class="row">
     <div class="col-12">
 
-        <form method="post" action="index.php?route=updatePassword">
+        <form method="post" action="index.php?route=updatePassword" class="needs-validation" novalidate>
             <div class="form-group">
                 <div class="row">
                     <div class="col-12 col-md-8">
@@ -13,21 +13,42 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-8">
-                        <input class="form-control" type="password" id="password" name="password" aria-label="Ancien mot de passe" required aria-required="true">
+                        <input class="form-control"
+                               type="password"
+                               id="password"
+                               name="oldPassword"
+                               aria-label="Ancien mot de passe"
+                               aria-required="true"
+                               required />
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
                     <div class="col-12">
-                        <label for="newPassword">New password</label>
+                        <label for="newPassword">
+                            New password *
+                            <span class="small font-italic">
+                                (at least 6 characters)
+                            </span>
+                        </label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-8 pb-2">
-                        <input class="form-control" type="password" id="newPassword" name="newPassword" aria-label="Nouveau mot de passe" required aria-required="true">
+                        <input class="form-control"
+                               type="password"
+                               id="newPassword"
+                               name="newPassword"
+                               aria-label="Nouveau mot de passe"
+                               aria-required="true"
+                               required />
+                        <br />
+                        <span id="clientPasswordValidation" class="invalid-feedback">
+                            Password must be 6 characters long.
+                        </span>
                         <span class="alert-danger">
-                            <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_STRING) : ''; ?>
+                            <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
                         </span>
                         <div class="row my-2">
                             <div class="col-12">
@@ -48,3 +69,6 @@
         </a>
     </div>
 </div>
+<script type="text/javascript">
+    checkUserInput();
+</script>

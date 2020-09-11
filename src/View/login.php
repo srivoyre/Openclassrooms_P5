@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12">
 
-                <form method="post" action="index.php?route=login">
+                <form method="post" action="index.php?route=login" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label for="pseudo">Username or email</label>
                         <br />
@@ -19,7 +19,11 @@
                                name="pseudo"
                                aria-label="Username/Email"
                                aria-required="true"
-                               required>
+                               required />
+                        <br />
+                        <span id="clientPseudoValidation" class="invalid-feedback">
+                            Please fill in a valid username.
+                        </span>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
@@ -30,7 +34,11 @@
                                name="password"
                                aria-label="Password"
                                aria-required="true"
-                               required>
+                               required />
+                        <br />
+                        <span id="clientPasswordValidation" class="invalid-feedback">
+                            Please fill in a valid password.
+                        </span>
                     </div>
                     <input class="btn btn-primary btn-block" type="submit" value="Login" id="submit" name="submit">
                 </form>
@@ -58,3 +66,6 @@
     <div class="col-sm-2 col-xl-3"></div>
 
 </div>
+<script type="text/javascript">
+    checkUserInput();
+</script>

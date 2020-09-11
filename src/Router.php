@@ -1,16 +1,16 @@
 <?php
 
-namespace App\src;
+namespace App\Src;
 
-use App\src\Controller\FrontController;
-use App\src\Controller\BackController;
-use App\src\Controller\ErrorController;
-use App\src\Controller\JokesController;
+use App\Src\Controller\FrontController;
+use App\Src\Controller\BackController;
+use App\Src\Controller\ErrorController;
+use App\Src\Controller\JokesController;
 use Exception;
 
 /**
  * Class Router
- * @package App\src
+ * @package App\Src
  */
 class Router
 {

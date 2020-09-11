@@ -31,7 +31,6 @@
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css" integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/error.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 
         <!--jQuery, Poppers.js, Bootstrap JS, then custom scripts -->
@@ -43,8 +42,6 @@
         <script src="../public/js/main.js"></script>
         <script src="../public/js/Joke.js"></script>
         <script src="../public/js/JokeApiXHR.js"></script>
-        <script <?= filter_var($script, FILTER_SANITIZE_URL) ?> ></script>
-
     </head>
 
     <body>
@@ -137,7 +134,7 @@
             <div class="col-1 col-lg-2"></div>
             <div class="col-10 col-lg-8">
                 <h1>
-                    <?= filter_var($h1); ?>
+                    <?= filter_var($h1, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
                 </h1>
             </div>
             <div class="col-1 col-lg-2"></div>
