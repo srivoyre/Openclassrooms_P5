@@ -9,7 +9,7 @@
             Registration
         </h1>
 
-        <form method="post" action="index.php?route=register">
+        <form method="post" action="index.php?route=register" class="needs-validation" novalidate>
             <div class="form-group">
                 <label for="pseudo">Username *</label>
                 <br />
@@ -22,12 +22,15 @@
                        aria-required="true"
                        required />
                 <br />
-                <span class="alert-danger">
+                <span id="clientPseudoValidation" class="invalid-feedback">
+                    Please fill in a valid username.
+                </span>
+                <span id="serverPseudoValidation" class="alert-danger">
                     <?= isset($errors['pseudo']) ? filter_var($errors['pseudo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
                 </span>
             </div>
             <div class="form-group">
-                <label for="email">Email *</label>
+                <label for="validationCustom01">Email *</label>
                 <br />
                 <input class="form-control"
                        type="email"
@@ -35,20 +38,28 @@
                        name="email"
                        value="<?= isset($post) ? filter_var((string)$post->get('email'), FILTER_SANITIZE_EMAIL) : '' ; ?>"
                        aria-label="Email"
-                       aria-describedby="basic-addon1"
                        aria-required="true"
                        required />
                 <br />
-                <span class="alert-danger">
-                    <?= isset($errors['email']) ? filter_var($errors['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
+                <span id="clientEmailValidation" class="invalid-feedback">
+                    Please fill in a valid email.
+                </span>
+                <span  id="serverEmailValidation" class="alert-danger">
+                    <?= isset($errors['email']) ? filter_var($errors['email']) : ''; ?>
                 </span>
             </div>
             <div class="form-group">
-                <label for="password">Password *</label><span class="small font-italic">(at least 6 characters)</span>
+                <label for="password">
+                    Password *
+                    <span class="small font-italic">(at least 6 characters)</span>
+                </label>
                 <br />
-                <input class="form-control" type="password" id="password" name="password" aria-label="Password" aria-required="true">
+                <input class="form-control" type="password" id="password" name="password" aria-label="Password" aria-required="true" required />
                 <br />
-                <span class="alert-danger">
+                <span id="clientPasswordValidation" class="invalid-feedback">
+                    Password must be 6 characters long.
+                </span>
+                <span id="serverPasswordValidation" class="alert-danger">
                     <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
                 </span>
             </div>
@@ -73,3 +84,6 @@
     <div class="col-sm-2 col-xl-3"></div>
 
 </div>
+<script type="text/javascript">
+    checkUserInput();
+</script>

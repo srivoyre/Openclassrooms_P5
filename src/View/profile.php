@@ -54,7 +54,7 @@ $this->h1 = $this->title;
             </div>
             <div id="user-info" class="col-12 d-none">
                 <div class="col-12">
-                    <form method="post" action="index.php?route=updateEmail">
+                    <form method="post" action="index.php?route=updateEmail" class="needs-validation" novalidate>
                         <div class="form-group row">
                             <div class="col-12 col-md-10 col-lg-8 p-0">
                                 <div class="row">
@@ -68,11 +68,14 @@ $this->h1 = $this->title;
                                                type="email"
                                                id="email"
                                                name="email"
-                                               aria-label="E-mail"
+                                               aria-label="Email"
                                                value="<?= isset($post) ? filter_var($post->get('email'), FILTER_SANITIZE_EMAIL) : filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL); ?>"
                                                aria-required="true"
                                                required>
                                         <br />
+                                        <span id="clientEmailValidation" class="invalid-feedback">
+                                            Please fill in a valid email.
+                                        </span>
                                         <span class="alert-danger">
                                          <?= isset($errors['email']) ? filter_var($errors['email'], FILTER_SANITIZE_STRING) : ''; ?>
                                     </span>
@@ -102,6 +105,7 @@ $this->h1 = $this->title;
 
 <script type="text/javascript">
     setUpProfilePage();
+    checkUserInput();
     let showUserInfo = <?php echo isset($showUserInfo) ? filter_var($showUserInfo, FILTER_SANITIZE_NUMBER_INT) : 0;?>;
     if (showUserInfo == true) {
         showElement(document.getElementById('user-info'));
