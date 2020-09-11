@@ -1,6 +1,6 @@
 <?php
 $this->title = 'Administration';
-$this->h1 = 'Administration';
+$this->h1 = $this->title;
 ?>
 
 <section class="mt-5">
@@ -115,9 +115,7 @@ $this->h1 = 'Administration';
                     </div>
                 </th>
                 <td class=" col-12 col-lg-3">
-                    <a href="mailto:<?= filter_var($user->getEmail(),FILTER_SANITIZE_EMAIL); ?>">
-                        <?= filter_var($user->getEmail(),FILTER_SANITIZE_EMAIL); ?>
-                    </a>
+                    <?= filter_var($user->getEmail(),FILTER_SANITIZE_EMAIL); ?>
                 </td>
                 <td class=" col-12 col-lg-2">
                     <span class="d-lg-none">Inscrit le </span>

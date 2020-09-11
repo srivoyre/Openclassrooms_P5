@@ -43,8 +43,6 @@
         <script src="../public/js/main.js"></script>
         <script src="../public/js/Joke.js"></script>
         <script src="../public/js/JokeApiXHR.js"></script>
-        <script <?= filter_var($script, FILTER_SANITIZE_URL) ?> ></script>
-
     </head>
 
     <body>
@@ -137,7 +135,7 @@
             <div class="col-1 col-lg-2"></div>
             <div class="col-10 col-lg-8">
                 <h1>
-                    <?= filter_var($h1); ?>
+                    <?= filter_var($h1, FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?>
                 </h1>
             </div>
             <div class="col-1 col-lg-2"></div>

@@ -5,8 +5,8 @@ $this->h1 = $this->title;
 
 <div class="row">
     <div class="col-12">
-        <h2><?= filter_var($user->getPseudo()); ?></h2>
-        <p class="font-italic">Member since <?= filter_var($user->getCreatedAt()); ?></p>
+        <h2><?= filter_var($user->getPseudo(), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></h2>
+        <p class="font-italic">Member since <?= filter_var($user->getCreatedAt(), FILTER_SANITIZE_FULL_SPECIAL_CHARS); ?></p>
 
         <div class="btn-group col-12 p-0" role="group">
             <div id="showJokes" type="button" class="btn btn-primary border border-light col-6 col-lg-4">Saved jokes</div>
@@ -15,7 +15,7 @@ $this->h1 = $this->title;
         <div class="row my-3">
             <div id="jokes-container" class="col-12 col-sm-10 p-3">
                 <script type="text/javascript">
-                    savedJokesArray = <?php echo json_encode($savedJokesArray); ?>;
+                    savedJokesArray = <?php echo json_encode(filter_var_array($savedJokesArray, FILTER_SANITIZE_NUMBER_INT)); ?>;
                 </script>
                 <?php
                 if ($savedJokesArray == null) {
@@ -29,21 +29,21 @@ $this->h1 = $this->title;
                 }
                 foreach ($savedJokesArray as $savedJoke) {
                     ?>
-                    <div id="joke-container<?= $savedJoke; ?>" class="row border-bottom py-3">
+                    <div id="joke-container<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>" class="row border-bottom py-3">
                         <script type="text/javascript">
-                            getJoke(false, <?= $savedJoke; ?>);
+                            getJoke(false, <?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>);
                         </script>
                         <div class="col-10">
-                            <span id="joke<?= $savedJoke; ?>" class="align-left joke text-wrap"></span>
+                            <span id="joke<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>" class="align-left joke text-wrap"></span>
                         </div>
-                        <div id="actions-container<?=$savedJoke;?>" class="col-2 actions-container text-left">
+                        <div id="actions-container<?=filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT);?>" class="col-2 actions-container text-left">
                             <a type="button"
-                               id="removeSavedJokeBtn<?= $savedJoke; ?>"
+                               id="removeSavedJokeBtn<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>"
                                class="btn removeSavedJoke"
                                title="Remove joke"
-                               href="index.php?route=removeJoke&jokeApiId=<?= $savedJoke; ?>">
-                                <i id="saved-icon<?= $savedJoke; ?>" class="fas fa-star p-2 text-warning action-icon"></i>
-                                <i id="remove-icon<?= $savedJoke; ?>" class="fas fa-times p-2 text-danger action-icon d-none"></i>
+                               href="index.php?route=removeJoke&jokeApiId=<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>">
+                                <i id="saved-icon<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>" class="fas fa-star p-2 text-warning action-icon"></i>
+                                <i id="remove-icon<?= filter_var($savedJoke, FILTER_SANITIZE_NUMBER_INT); ?>" class="fas fa-times p-2 text-danger action-icon d-none"></i>
                             </a>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ $this->h1 = $this->title;
                                                id="email"
                                                name="email"
                                                aria-label="E-mail"
-                                               value="<?= isset($post) ? filter_var((string)$post->get('email')) : filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL); ?>"
+                                               value="<?= isset($post) ? filter_var($post->get('email'), FILTER_SANITIZE_EMAIL) : filter_var($user->getEmail(), FILTER_SANITIZE_EMAIL); ?>"
                                                aria-required="true"
                                                required>
                                         <br />
@@ -102,7 +102,7 @@ $this->h1 = $this->title;
 
 <script type="text/javascript">
     setUpProfilePage();
-    let showUserInfo = <?php echo isset($showUserInfo) ? $showUserInfo : 0;?>;
+    let showUserInfo = <?php echo isset($showUserInfo) ? filter_var($showUserInfo, FILTER_SANITIZE_NUMBER_INT) : 0;?>;
     if (showUserInfo == true) {
         showElement(document.getElementById('user-info'));
         hideElement(document.getElementById('jokes-container'))

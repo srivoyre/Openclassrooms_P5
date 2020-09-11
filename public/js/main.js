@@ -3,6 +3,7 @@
  ************************************/
 let savedJokesArray;
 let filteredJokesArray;
+
 /*************************************
  * standard functions
  ************************************/
@@ -11,11 +12,13 @@ function hideElement(element) {
         element.classList.add('d-none');
     }
 }
+
 function showElement(element) {
     if (element.classList.contains('d-none')) {
         element.classList.remove('d-none');
     }
 }
+
 /****************************************
  * App functions
  ****************************************/
@@ -54,6 +57,7 @@ function setUpProfilePage() {
         }
     }
 }
+
 const processResult = function (result, random) {
     let joke = new Joke(JSON.parse(result), random);
     if (random === true
@@ -74,7 +78,6 @@ const processResult = function (result, random) {
 }
 
 function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
-    console.log(saveBtn);
     if( savedJokesArray !== null
         && savedJokesArray.indexOf(jokeId.toString()) === -1
     ) {
@@ -85,6 +88,7 @@ function manageActionButtons(saveBtn, unsaveBtn, jokeId) {
         showElement(unsaveBtn);
     }
 }
+
 /****************************************
  * function called by user interaction
  ****************************************/

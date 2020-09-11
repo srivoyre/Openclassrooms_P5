@@ -11,7 +11,9 @@ class JokeApiXHR {
         this.requestUrl = this.baseURL + '/joke/' + this.categories.join(',') + '?' + this.params.join('&');
         this.ajax.open('GET', this.requestUrl, true);
         this.ajax.addEventListener('load', () => {
-            if (this.ajax.readyState == 4 && this.ajax.status < 300) // readyState 4 means request has finished + we only want to parse the joke if the request was successful (status code lower than 300)
+            if (this.ajax.readyState == 4 && this.ajax.status < 300)
+                // readyState 4 means request has finished + we only want to parse the joke if
+                // the request was successful (status code lower than 300)
             {
                 callback(this.ajax.responseText, random);
 

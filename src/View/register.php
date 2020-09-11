@@ -17,13 +17,13 @@
                        type="text"
                        id="pseudo"
                        name="pseudo"
-                       value="<?= isset($post) ? filter_var($post->get('pseudo'),FILTER_SANITIZE_STRING) : ''; ?>"
+                       value="<?= isset($post) ? filter_var($post->get('pseudo'), FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>"
                        aria-label="Username"
                        aria-required="true"
                        required />
                 <br />
                 <span class="alert-danger">
-                    <?= isset($errors['pseudo']) ? filter_var($errors['pseudo'], FILTER_SANITIZE_STRING) : ''; ?>
+                    <?= isset($errors['pseudo']) ? filter_var($errors['pseudo'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
                 </span>
             </div>
             <div class="form-group">
@@ -40,7 +40,7 @@
                        required />
                 <br />
                 <span class="alert-danger">
-                    <?= isset($errors['email']) ? filter_var($errors['email']) : ''; ?>
+                    <?= isset($errors['email']) ? filter_var($errors['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
                 </span>
             </div>
             <div class="form-group">
@@ -49,7 +49,7 @@
                 <input class="form-control" type="password" id="password" name="password" aria-label="Password" aria-required="true">
                 <br />
                 <span class="alert-danger">
-                    <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_STRING) : ''; ?>
+                    <?= isset($errors['password']) ? filter_var($errors['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : ''; ?>
                 </span>
             </div>
             <input class="btn btn-primary btn-block" type="submit" value="Register" id="submit" name="submit">
@@ -58,7 +58,7 @@
         <div class="row mt-5">
             <div class="col-6 text-center">
                 <a type="button" class="btn btn-primary btn-block" href="index.php?route=login">
-                    I have an account !
+                    I have an account!
                 </a>
             </div>
             <div class="col-6 text-center">
